@@ -67,16 +67,37 @@
         .hero {
             height: 100vh;
             display: flex; align-items: center; justify-content: center; text-align: center;
-            background: linear-gradient(rgba(18, 18, 18, 0.8), rgba(18, 18, 18, 0.9)), url('https://images.unsplash.com/photo-1585747860715-2ba37e788b70?q=80&w=1920&auto=format&fit=crop') center/cover;
+            /* Zaktualizowane zdjęcie w tle z ciemniejszą nakładką dla lepszej czytelności */
+            background: linear-gradient(rgba(10, 10, 10, 0.75), rgba(10, 10, 10, 0.85)), 
+                        url('https://scontent-ber1-1.xx.fbcdn.net/v/t1.6435-9/101795756_611909716107535_965182673007935488_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=7b2446&_nc_ohc=1RS-k5ZHsOsQ7kNvwH4sCuw&_nc_oc=Adp1MEmBVghF0Y9Zld48iNGQFXb0jg-z-XkVRezzxLhd0u0g5OAF9KC1b9uuZk931IE&_nc_zt=23&_nc_ht=scontent-ber1-1.xx&_nc_gid=26sxcWbGiBncymx9uU_MtA&_nc_ss=7a3a8&oh=00_Af1c5NnbQXIhQQM_1QK4WUICxnVOQGQulJXp1sa7lqKMGw&oe=6A0ED341') 
+                        center/cover no-repeat;
             padding: 0 20px;
         }
-        .hero h1 { font-family: 'Playfair Display', serif; font-size: 4rem; color: var(--primary); margin-bottom: 20px; }
-        .hero p { font-size: 1.2rem; margin-bottom: 40px; color: var(--text-muted); max-width: 600px; margin-left: auto; margin-right: auto; }
+        .hero-content {
+            max-width: 850px;
+        }
+        .hero h1 { 
+            font-family: 'Playfair Display', serif; 
+            font-size: 4rem; 
+            color: var(--primary); 
+            margin-bottom: 20px;
+            /* Dodatkowy cień dla czytelności */
+            text-shadow: 2px 2px 15px rgba(0,0,0,0.9);
+        }
+        .hero p { 
+            font-size: 1.3rem; 
+            margin-bottom: 40px; 
+            color: #fff; 
+            max-width: 650px; 
+            margin-left: auto; 
+            margin-right: auto;
+            text-shadow: 1px 1px 10px rgba(0,0,0,0.8);
+        }
         .btn-large {
             padding: 15px 40px; font-size: 1.1rem; background: var(--primary); color: #000;
             border: none; border-radius: 5px; font-weight: 700; cursor: pointer; transition: var(--transition); text-decoration: none; display: inline-block;
         }
-        .btn-large:hover { background: var(--primary-hover); transform: scale(1.05); box-shadow: 0 10px 20px rgba(197, 160, 89, 0.2); }
+        .btn-large:hover { background: var(--primary-hover); transform: scale(1.05); box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
 
         /* --- Sekcje Ogólne --- */
         section { padding: 100px 5%; }
@@ -89,7 +110,7 @@
         .service-card h3 { color: var(--primary); margin-bottom: 15px; font-size: 1.3rem; }
         .service-card .price { font-size: 1.5rem; font-weight: bold; color: #fff; margin-bottom: 10px; }
 
-        /* --- Podstrona Rezerwacji (Wybór Fryzjera) --- */
+        /* --- Podstrona Rezerwacji --- */
         .barber-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -123,7 +144,6 @@
         }
         .back-link:hover { color: #fff; }
 
-        /* Google Calendar Button Styling Override */
         .vHIyje { 
             font-family: 'Montserrat', sans-serif !important; 
             border-radius: 5px !important; font-weight: 700 !important; 
@@ -166,15 +186,15 @@
 
     <main id="home-view" class="view">
         <section class="hero">
-            <div>
+            <div class="hero-content">
                 <h1>Fryzjer Męski Gosia</h1>
-                <p>Profesjonalne strzyżenie w Pruszczu Gdańskim. Wybierz jakość, tradycję i nowoczesny styl.</p>
+                <p>Profesjonalne strzyżenie w Pruszczu Gdańskim. Wybierz jakość, tradycję i nowoczesny styl w najlepszej atmosferze.</p>
                 <button onclick="showBooking()" class="btn-large">Zarezerwuj wizytę online</button>
             </div>
         </section>
 
         <section id="uslugi">
-            <h2 class="section-title">Nasz Cennik</h2>
+            <h2 class="section-title">Cennik Usług</h2>
             <div class="services-grid">
                 <div class="service-card"><h3>Strzyżenie męskie</h3><div class="price">60 zł</div><p>30 min</p></div>
                 <div class="service-card"><h3>Strzyżenie + broda</h3><div class="price">100 zł</div><p>60 min</p></div>
@@ -188,17 +208,17 @@
             <div class="reviews">
                 <div class="review-card">
                     <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                    <p>"Najlepszy fryzjer w Pruszczu. Pani Gosia to profesjonalistka w każdym calu."</p>
+                    <p>"Najlepszy fryzjer w Pruszczu. Pani Gosia to profesjonalistka w każdym calu. Bardzo polecam!"</p>
                     <br><strong>- Paweł</strong>
                 </div>
                 <div class="review-card">
                     <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                    <p>"Salon godny polecenia. Świetna atmosfera i doskonałe cięcie."</p>
+                    <p>"Salon godny polecenia. Świetna atmosfera i doskonałe cięcie. Zawsze wychodzę zadowolony."</p>
                     <br><strong>- Krzysiek</strong>
                 </div>
                 <div class="review-card">
                     <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                    <p>"Mąż z synem zawsze wychodzą zadowoleni. Polecam każdemu."</p>
+                    <p>"Mąż z synem zawsze wychodzą zadowoleni. Szybka rezerwacja i miła obsługa."</p>
                     <br><strong>- Elżbieta</strong>
                 </div>
             </div>
@@ -294,10 +314,8 @@
         }
 
         function goToSection(sectionId) {
-            // Jeśli jesteśmy na widoku rezerwacji, wróć na stronę główną
             if (bookingView.style.display === 'block') {
                 showHome();
-                // Daj krótką chwilę na wyrenderowanie zanim przewiniesz
                 setTimeout(() => {
                     document.getElementById(sectionId).scrollIntoView();
                 }, 50);
