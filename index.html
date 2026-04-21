@@ -49,10 +49,21 @@
             display: flex; align-items: center; gap: 10px;
             cursor: pointer;
         }
-        nav ul { list-style: none; display: flex; gap: 30px; }
+        
+        /* Hamburger menu ikona */
+        .hamburger {
+            display: none;
+            font-size: 1.8rem;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .hamburger:hover { color: var(--primary); }
+
+        nav ul { list-style: none; display: flex; gap: 30px; align-items: center; }
         nav ul li a { color: var(--text-light); text-decoration: none; font-weight: 600; font-size: 0.9rem; text-transform: uppercase; transition: var(--transition); cursor: pointer; }
         nav ul li a:hover { color: var(--primary); }
-        .nav-btn { background: var(--primary); color: #000 !important; padding: 8px 20px; border-radius: 4px; }
+        .nav-btn { background: var(--primary); color: #000 !important; padding: 8px 20px; border-radius: 4px; display: inline-block; }
         .nav-btn:hover { background: var(--primary-hover); transform: translateY(-2px); }
 
         /* --- Widoki (Strony SPA) --- */
@@ -153,11 +164,34 @@
 
         footer { text-align: center; padding: 40px 20px; background: #0a0a0a; color: #555; border-top: 1px solid #222; }
 
+        /* --- MOBILE RESPONSIVENESS --- */
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5rem; }
-            nav ul { display: none; }
+            .hero p { font-size: 1.1rem; }
             .contact-grid { grid-template-columns: 1fr; }
             .trustindex-container { padding: 15px; }
+            
+            /* Nawigacja Mobile */
+            .hamburger { display: block; }
+            nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(18, 18, 18, 0.98);
+                border-bottom: 1px solid #333;
+                display: none; /* Schowane domyślnie */
+                padding-bottom: 20px;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            }
+            nav.active { display: block; }
+            nav ul {
+                flex-direction: column;
+                gap: 20px;
+                padding-top: 20px;
+            }
+            nav ul li a { font-size: 1.1rem; display: block; width: 100%; padding: 5px 0;}
+            .nav-btn { display: inline-block; margin-top: 10px; }
         }
     </style>
 </head>
@@ -165,7 +199,12 @@
 
     <header>
         <div class="logo" onclick="showHome()"><i class="fa-solid fa-scissors"></i> GOSIA</div>
-        <nav>
+        
+        <div class="hamburger" onclick="toggleMenu()">
+            <i class="fa-solid fa-bars" id="menu-icon"></i>
+        </div>
+
+        <nav id="nav-menu">
             <ul>
                 <li><a onclick="goToSection('uslugi')">Usługi</a></li>
                 <li><a onclick="goToSection('opinie')">Opinie</a></li>
@@ -333,9 +372,31 @@
         const homeView = document.getElementById('home-view');
         const bookingView = document.getElementById('booking-view');
         const reviewsView = document.getElementById('reviews-view');
+        const navMenu = document.getElementById('nav-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        // Funkcja otwierająca/zamykająca menu na telefonach
+        function toggleMenu() {
+            navMenu.classList.toggle('active');
+            if(navMenu.classList.contains('active')) {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-xmark'); // Zmienia ikonę na "X"
+            } else {
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars'); // Wraca do 3 kresek
+            }
+        }
+
+        // Funkcja ukrywająca menu po kliknięciu
+        function closeMenu() {
+            navMenu.classList.remove('active');
+            menuIcon.classList.remove('fa-xmark');
+            menuIcon.classList.add('fa-bars');
+        }
 
         // Pokazanie panelu rezerwacji
         function showBooking() {
+            closeMenu(); // Zamykamy menu mobile
             homeView.style.display = 'none';
             reviewsView.style.display = 'none';
             bookingView.style.display = 'block';
@@ -344,6 +405,7 @@
 
         // Pokazanie panelu wszystkich opinii
         function showReviews() {
+            closeMenu();
             homeView.style.display = 'none';
             bookingView.style.display = 'none';
             reviewsView.style.display = 'block';
@@ -352,6 +414,7 @@
 
         // Powrót do strony głównej
         function showHome() {
+            closeMenu();
             bookingView.style.display = 'none';
             reviewsView.style.display = 'none';
             homeView.style.display = 'block';
@@ -360,6 +423,7 @@
 
         // Przewijanie do konkretnej sekcji na stronie głównej
         function goToSection(sectionId) {
+            closeMenu(); // Zamykamy menu mobile
             if (bookingView.style.display === 'block' || reviewsView.style.display === 'block') {
                 showHome();
                 setTimeout(() => {
