@@ -18,7 +18,7 @@
             --bg-card: #252525;
             --text-light: #f5f5f5;
             --text-muted: #a0a0a0;
-            --transition: all 0.3s ease;
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
@@ -28,9 +28,10 @@
             background-color: var(--bg-dark);
             color: var(--text-light);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        /* --- Header & Nav --- */
+        /* --- Nawigacja --- */
         header {
             background: rgba(18, 18, 18, 0.95);
             position: fixed;
@@ -46,12 +47,21 @@
             color: var(--primary);
             text-decoration: none;
             display: flex; align-items: center; gap: 10px;
+            cursor: pointer;
         }
         nav ul { list-style: none; display: flex; gap: 30px; }
-        nav ul li a { color: var(--text-light); text-decoration: none; font-weight: 600; font-size: 0.9rem; text-transform: uppercase; transition: var(--transition); }
+        nav ul li a { color: var(--text-light); text-decoration: none; font-weight: 600; font-size: 0.9rem; text-transform: uppercase; transition: var(--transition); cursor: pointer; }
         nav ul li a:hover { color: var(--primary); }
         .nav-btn { background: var(--primary); color: #000 !important; padding: 8px 20px; border-radius: 4px; }
         .nav-btn:hover { background: var(--primary-hover); transform: translateY(-2px); }
+
+        /* --- Widoki (Strony) --- */
+        .view {
+            transition: var(--transition);
+            min-height: 100vh;
+        }
+        #home-view { display: block; }
+        #booking-view { display: none; padding-top: 100px; }
 
         /* --- Hero Section --- */
         .hero {
@@ -68,27 +78,24 @@
         }
         .btn-large:hover { background: var(--primary-hover); transform: scale(1.05); box-shadow: 0 10px 20px rgba(197, 160, 89, 0.2); }
 
-        /* --- Sections --- */
+        /* --- Sekcje Ogólne --- */
         section { padding: 100px 5%; }
         .section-title { text-align: center; font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--primary); margin-bottom: 50px; }
 
         /* --- Usługi --- */
-        .services-section { background: var(--bg-dark); }
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; max-width: 1000px; margin: 0 auto; }
         .service-card { background: var(--bg-card); padding: 30px; border-radius: 8px; border: 1px solid #333; text-align: center; transition: var(--transition); }
         .service-card:hover { border-color: var(--primary); transform: translateY(-5px); }
         .service-card h3 { color: var(--primary); margin-bottom: 15px; font-size: 1.3rem; }
         .service-card .price { font-size: 1.5rem; font-weight: bold; color: #fff; margin-bottom: 10px; }
-        .service-card .time { color: var(--text-muted); font-size: 0.9rem; }
 
-        /* --- Wybór Fryzjera & Rezerwacja --- */
-        .booking-section { background: var(--bg-lighter); }
+        /* --- Podstrona Rezerwacji (Wybór Fryzjera) --- */
         .barber-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 25px;
             max-width: 1100px;
-            margin: 0 auto;
+            margin: 0 auto 50px;
         }
         .barber-card {
             background: var(--bg-card);
@@ -103,38 +110,24 @@
         }
         .barber-card:hover { border-color: var(--primary); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
         .barber-icon {
-            font-size: 3.5rem;
-            color: var(--primary);
-            margin-bottom: 15px;
-            background: var(--bg-dark);
-            width: 100px;
-            height: 100px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            border: 2px solid #333;
+            font-size: 3.5rem; color: var(--primary); margin-bottom: 15px;
+            background: var(--bg-dark); width: 100px; height: 100px;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 50%; border: 2px solid #333;
         }
-        .barber-card h3 { font-size: 1.5rem; margin-bottom: 5px; color: #fff; }
-        .barber-card p { color: var(--text-muted); margin-bottom: 20px; font-size: 0.9rem; font-weight: 600; text-transform: uppercase; }
-        
-        .calendar-placeholder {
-            color: var(--text-muted);
-            font-style: italic;
-            font-size: 0.85rem;
-            padding: 12px 0;
-            border-top: 1px solid #333;
-            width: 100%;
-        }
+        .calendar-placeholder { color: var(--text-muted); font-style: italic; font-size: 0.85rem; padding: 12px 0; border-top: 1px solid #333; width: 100%; }
 
-        /* Stylizacja przycisków Google (nadpisanie domyślnych kolorów) */
+        .back-link {
+            text-align: center; margin-top: 40px; display: block; color: var(--primary);
+            text-decoration: none; font-weight: 600; cursor: pointer; transition: var(--transition);
+        }
+        .back-link:hover { color: #fff; }
+
+        /* Google Calendar Button Styling Override */
         .vHIyje { 
             font-family: 'Montserrat', sans-serif !important; 
-            border-radius: 5px !important; 
-            font-weight: 700 !important; 
-            font-size: 0.9rem !important; 
-            text-transform: uppercase !important;
-            letter-spacing: 0.5px !important;
+            border-radius: 5px !important; font-weight: 700 !important; 
+            font-size: 0.9rem !important; text-transform: uppercase !important;
         }
 
         /* --- Opinie --- */
@@ -142,13 +135,13 @@
         .review-card { background: var(--bg-lighter); padding: 30px; border-radius: 8px; border-top: 3px solid var(--primary); }
         .stars { color: var(--primary); margin-bottom: 15px; }
 
-        /* --- Contact --- */
+        /* --- Kontakt --- */
         .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
         .info-item { display: flex; gap: 15px; margin-bottom: 25px; font-size: 1.1rem; }
         .info-item i { color: var(--primary); font-size: 1.5rem; }
         .map iframe { width: 100%; height: 350px; border-radius: 10px; border: none; filter: grayscale(100%) invert(90%) contrast(80%); }
 
-        footer { text-align: center; padding: 20px; background: #0a0a0a; color: #555; border-top: 1px solid #222; }
+        footer { text-align: center; padding: 40px 20px; background: #0a0a0a; color: #555; border-top: 1px solid #222; }
 
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5rem; }
@@ -160,168 +153,159 @@
 <body>
 
     <header>
-        <a href="#" class="logo"><i class="fa-solid fa-scissors"></i> GOSIA</a>
+        <div class="logo" onclick="showHome()"><i class="fa-solid fa-scissors"></i> GOSIA</div>
         <nav>
             <ul>
-                <li><a href="#uslugi">Usługi</a></li>
-                <li><a href="#opinie">Opinie</a></li>
-                <li><a href="#kontakt">Kontakt</a></li>
-                <li><a href="#rezerwacja" class="nav-btn">Rezerwacja</a></li>
+                <li><a onclick="goToSection('uslugi')">Usługi</a></li>
+                <li><a onclick="goToSection('opinie')">Opinie</a></li>
+                <li><a onclick="goToSection('kontakt')">Kontakt</a></li>
+                <li><a onclick="showBooking()" class="nav-btn">Umów wizytę</a></li>
             </ul>
         </nav>
     </header>
 
-    <section class="hero">
-        <div>
-            <h1>Profesjonalne strzyżenie<br>w Pruszczu Gdańskim</h1>
-            <p>Klasyczne cięcia i precyzyjny barbering. Wybierz swojego ulubionego fryzjera i zarezerwuj termin w kilka sekund.</p>
-            <a href="#rezerwacja" class="btn-large">Wybierz fryzjera</a>
-        </div>
-    </section>
-
-    <section id="uslugi" class="services-section">
-        <h2 class="section-title">Cennik Usług</h2>
-        <div class="services-grid">
-            <div class="service-card">
-                <h3>Strzyżenie męskie</h3>
-                <div class="price">60 zł</div>
-                <div class="time"><i class="fa-regular fa-clock"></i> ok. 30 min</div>
-            </div>
-            <div class="service-card">
-                <h3>Strzyżenie + broda</h3>
-                <div class="price">100 zł</div>
-                <div class="time"><i class="fa-regular fa-clock"></i> ok. 60 min</div>
-            </div>
-            <div class="service-card">
-                <h3>Strzyżenie dzieci</h3>
-                <div class="price">50 zł</div>
-                <div class="time"><i class="fa-regular fa-clock"></i> ok. 30 min</div>
-            </div>
-            <div class="service-card">
-                <h3>Modelowanie brody</h3>
-                <div class="price">50 zł</div>
-                <div class="time"><i class="fa-regular fa-clock"></i> ok. 30 min</div>
-            </div>
-        </div>
-    </section>
-
-    <section id="rezerwacja" class="booking-section">
-        <h2 class="section-title">Zarezerwuj wizytę u...</h2>
-        
-        <div class="barber-grid">
-            
-            <div class="barber-card">
-                <div class="barber-icon"><i class="fa-solid fa-user-tie"></i></div>
-                <h3>Gosia</h3>
-                <p>Senior Barber</p>
-                
-                <link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet">
-                <script src="https://calendar.google.com/calendar/scheduling-button-script.js" async></script>
-                <script>
-                (function() {
-                  var target = document.currentScript;
-                  window.addEventListener('load', function() {
-                    calendar.schedulingButton.load({
-                      url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ0FAwVugFfzQ2z93cdV--ICfDyj1ruiVLcPKIaupYSTO9NYG64XneN_tq_cgp_prYVZZvfgliHh?gv=true',
-                      color: '#c5a059',
-                      label: 'Zarezerwuj u Gosi',
-                      target,
-                    });
-                  });
-                })();
-                </script>
-                </div>
-
-            <div class="barber-card">
-                <div class="barber-icon"><i class="fa-solid fa-user"></i></div>
-                <h3>Fryzjerka 2</h3>
-                <p>Barber</p>
-                <div class="calendar-placeholder">Kalendarz online wkrótce</div>
-            </div>
-
-            <div class="barber-card">
-                <div class="barber-icon"><i class="fa-solid fa-user"></i></div>
-                <h3>Fryzjerka 3</h3>
-                <p>Barber</p>
-                <div class="calendar-placeholder">Kalendarz online wkrótce</div>
-            </div>
-
-            <div class="barber-card">
-                <div class="barber-icon"><i class="fa-solid fa-user"></i></div>
-                <h3>Fryzjerka 4</h3>
-                <p>Barber</p>
-                <div class="calendar-placeholder">Kalendarz online wkrótce</div>
-            </div>
-
-        </div>
-    </section>
-
-    <section id="opinie">
-        <h2 class="section-title">Co mówią o nas klienci?</h2>
-        <div style="text-align: center; margin-bottom: 40px;">
-            <div class="stars" style="font-size: 1.5rem;">
-                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-            </div>
-            <h3>4.9 na podstawie 477 opinii w Google</h3>
-        </div>
-        <div class="reviews">
-            <div class="review-card">
-                <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                <p>"Super zadowolony męskie strzyżenie włosy plus broda. Pełen profesjonalizm i dbałość o detale."</p>
-                <br><strong>- Paweł</strong>
-            </div>
-            <div class="review-card">
-                <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                <p>"Salon godny polecenia. Szybko, sprawnie i w bardzo dobrej cenie. Pani Gosia to mistrzyni."</p>
-                <br><strong>- Krzysiek</strong>
-            </div>
-            <div class="review-card">
-                <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                <p>"Najlepszy fryzjer w Pruszczu. Mąż z synem przychodzą od lat i zawsze wychodzą zadowoleni."</p>
-                <br><strong>- Elżbieta</strong>
-            </div>
-        </div>
-    </section>
-
-    <section id="kontakt" class="booking-section">
-        <div class="contact-grid">
+    <main id="home-view" class="view">
+        <section class="hero">
             <div>
-                <h2 class="section-title" style="text-align: left; margin-bottom: 30px;">Kontakt</h2>
-                <div class="info-item">
-                    <i class="fa-solid fa-location-dot"></i>
-                    <div>
-                        <strong>Adres:</strong><br>
-                        ul. Spokojna, 83-000 Pruszcz Gdański
-                    </div>
-                </div>
-                <div class="info-item">
-                    <i class="fa-solid fa-phone"></i>
-                    <div>
-                        <strong>Telefon:</strong><br>
-                        <a href="tel:514117958" style="color: var(--primary); text-decoration: none; font-weight: bold; font-size: 1.2rem;">514 117 958</a>
-                    </div>
-                </div>
-                <div class="info-item">
-                    <i class="fa-solid fa-clock"></i>
-                    <div>
-                        <strong>Godziny otwarcia:</strong><br>
-                        Poniedziałek - Piątek: 08:00 - 19:00<br>
-                        Sobota: 08:00 - 14:00<br>
-                        Niedziela: Zamknięte
-                    </div>
-                </div>
-                <br>
-                <a href="tel:514117958" class="btn-large" style="width: 100%; text-align: center; display: block; background: var(--primary); color: #000;"><i class="fa-solid fa-phone"></i> Zadzwoń teraz</a>
+                <h1>Fryzjer Męski Gosia</h1>
+                <p>Profesjonalne strzyżenie w Pruszczu Gdańskim. Wybierz jakość, tradycję i nowoczesny styl.</p>
+                <button onclick="showBooking()" class="btn-large">Zarezerwuj wizytę online</button>
             </div>
-            <div class="map">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d18721.23668886364!2d18.618335!3d54.261271!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46fd73030fb4e0b3%3A0xc0fb1df84de2a5b6!2sPruszcz%20Gda%C5%84ski!5e0!3m2!1spl!2spl!4v1700000000000!5m2!1spl!2spl" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </section>
+
+        <section id="uslugi">
+            <h2 class="section-title">Nasz Cennik</h2>
+            <div class="services-grid">
+                <div class="service-card"><h3>Strzyżenie męskie</h3><div class="price">60 zł</div><p>30 min</p></div>
+                <div class="service-card"><h3>Strzyżenie + broda</h3><div class="price">100 zł</div><p>60 min</p></div>
+                <div class="service-card"><h3>Strzyżenie dzieci</h3><div class="price">50 zł</div><p>30 min</p></div>
+                <div class="service-card"><h3>Modelowanie brody</h3><div class="price">50 zł</div><p>30 min</p></div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <section id="opinie">
+            <h2 class="section-title">Opinie Klientów</h2>
+            <div class="reviews">
+                <div class="review-card">
+                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p>"Najlepszy fryzjer w Pruszczu. Pani Gosia to profesjonalistka w każdym calu."</p>
+                    <br><strong>- Paweł</strong>
+                </div>
+                <div class="review-card">
+                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p>"Salon godny polecenia. Świetna atmosfera i doskonałe cięcie."</p>
+                    <br><strong>- Krzysiek</strong>
+                </div>
+                <div class="review-card">
+                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p>"Mąż z synem zawsze wychodzą zadowoleni. Polecam każdemu."</p>
+                    <br><strong>- Elżbieta</strong>
+                </div>
+            </div>
+        </section>
+
+        <section id="kontakt">
+            <div class="contact-grid">
+                <div>
+                    <h2 class="section-title" style="text-align: left; margin-bottom: 30px;">Kontakt</h2>
+                    <div class="info-item"><i class="fa-solid fa-location-dot"></i><p>ul. Spokojna, 83-000 Pruszcz Gdański</p></div>
+                    <div class="info-item"><i class="fa-solid fa-phone"></i><p><a href="tel:514117958" style="color:var(--primary); text-decoration:none; font-weight:bold;">514 117 958</a></p></div>
+                    <div class="info-item"><i class="fa-solid fa-clock"></i><p>Pon-Pt: 8:00 - 19:00 | Sob: 8:00 - 14:00</p></div>
+                </div>
+                <div class="map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d18721.23668886364!2d18.618335!3d54.261271!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46fd73030fb4e0b3%3A0xc0fb1df84de2a5b6!2sPruszcz%20Gda%C5%84ski!5e0!3m2!1spl!2spl!4v1700000000000!5m2!1spl!2spl" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <main id="booking-view" class="view">
+        <section>
+            <h2 class="section-title">Wybierz swojego fryzjera</h2>
+            <div class="barber-grid">
+                
+                <div class="barber-card">
+                    <div class="barber-icon"><i class="fa-solid fa-user-tie"></i></div>
+                    <h3>Gosia</h3>
+                    <p>Senior Barber</p>
+                    
+                    <link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet">
+                    <script src="https://calendar.google.com/calendar/scheduling-button-script.js" async></script>
+                    <script>
+                    (function() {
+                      var target = document.currentScript;
+                      window.addEventListener('load', function() {
+                        calendar.schedulingButton.load({
+                          url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ0FAwVugFfzQ2z93cdV--ICfDyj1ruiVLcPKIaupYSTO9NYG64XneN_tq_cgp_prYVZZvfgliHh?gv=true',
+                          color: '#c5a059',
+                          label: 'Zarezerwuj u Gosi',
+                          target,
+                        });
+                      });
+                    })();
+                    </script>
+                </div>
+
+                <div class="barber-card">
+                    <div class="barber-icon"><i class="fa-solid fa-user"></i></div>
+                    <h3>Fryzjerka 2</h3>
+                    <p>Barber</p>
+                    <div class="calendar-placeholder">Kalendarz wkrótce</div>
+                </div>
+
+                <div class="barber-card">
+                    <div class="barber-icon"><i class="fa-solid fa-user"></i></div>
+                    <h3>Fryzjerka 3</h3>
+                    <p>Barber</p>
+                    <div class="calendar-placeholder">Kalendarz wkrótce</div>
+                </div>
+
+                <div class="barber-card">
+                    <div class="barber-icon"><i class="fa-solid fa-user"></i></div>
+                    <h3>Fryzjerka 4</h3>
+                    <p>Barber</p>
+                    <div class="calendar-placeholder">Kalendarz wkrótce</div>
+                </div>
+
+            </div>
+            
+            <a onclick="showHome()" class="back-link"><i class="fa-solid fa-arrow-left"></i> Wróć do strony głównej</a>
+        </section>
+    </main>
 
     <footer>
         <p>© 2026 Fryzjer Męski Gosia - Pruszcz Gdański. Wszystkie prawa zastrzeżone.</p>
     </footer>
+
+    <script>
+        const homeView = document.getElementById('home-view');
+        const bookingView = document.getElementById('booking-view');
+
+        function showBooking() {
+            homeView.style.display = 'none';
+            bookingView.style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+
+        function showHome() {
+            bookingView.style.display = 'none';
+            homeView.style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+
+        function goToSection(sectionId) {
+            // Jeśli jesteśmy na widoku rezerwacji, wróć na stronę główną
+            if (bookingView.style.display === 'block') {
+                showHome();
+                // Daj krótką chwilę na wyrenderowanie zanim przewiniesz
+                setTimeout(() => {
+                    document.getElementById(sectionId).scrollIntoView();
+                }, 50);
+            } else {
+                document.getElementById(sectionId).scrollIntoView();
+            }
+        }
+    </script>
 
 </body>
 </html>
