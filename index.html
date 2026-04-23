@@ -31,6 +31,7 @@
             overflow-x: hidden;
         }
 
+        /* --- Nawigacja --- */
         header {
             background: rgba(18, 18, 18, 0.95); position: fixed; top: 0; width: 100%; z-index: 1000;
             padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center;
@@ -42,18 +43,23 @@
         nav ul { list-style: none; display: flex; gap: 30px; align-items: center; }
         nav ul li a { color: var(--text-light); text-decoration: none; font-weight: 600; font-size: 0.85rem; text-transform: uppercase; cursor: pointer; transition: var(--transition); }
         nav ul li a:hover { color: var(--primary); }
-        .nav-btn { background: var(--primary); color: #000 !important; padding: 8px 20px; border-radius: 4px; display: inline-block; }
-        .nav-btn:hover { background: var(--primary-hover); transform: translateY(-2px); }
+        .nav-btn { background: var(--primary); color: #000 !important; padding: 8px 20px; border-radius: 4px; display: inline-block; cursor: pointer; }
 
+        /* --- Widoki (SPA) --- */
         @keyframes fadeInSlideUp {
-            from { opacity: 0; transform: translateY(50px) scale(0.98); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .view { display: none; padding-top: 100px; min-height: 100vh; }
-        .view.active-view { display: block; animation: fadeInSlideUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
+        .view { display: none; padding-top: 100px; min-height: 100vh; padding-bottom: 50px; }
+        .view.active-view { display: block; animation: fadeInSlideUp 0.6s ease forwards; }
         #home-view.active-view { padding-top: 0; }
 
+        /* --- Sekcje --- */
+        section { padding: 80px 5%; }
+        .section-title { text-align: center; font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--primary); margin-bottom: 40px; }
+
+        /* --- Hero --- */
         .hero {
             height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center;
             background: linear-gradient(rgba(10, 10, 10, 0.75), rgba(10, 10, 10, 0.85)), 
@@ -63,44 +69,46 @@
         .hero h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; color: var(--primary); margin-bottom: 20px; }
         .hero p { font-size: 1.2rem; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto; }
         
+        /* --- Przyciski --- */
         .btn-large { padding: 15px 40px; font-size: 1.1rem; background: var(--primary); color: #000; border: none; border-radius: 4px; font-weight: 700; cursor: pointer; transition: var(--transition); text-decoration: none; display: inline-block; }
         .btn-large:hover { background: var(--primary-hover); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
-        .btn-outline { padding: 10px 20px; font-size: 0.9rem; background: transparent; color: var(--primary); border: 2px solid var(--primary); border-radius: 4px; font-weight: 700; cursor: pointer; transition: var(--transition); }
+        .btn-outline { padding: 12px 25px; font-size: 0.9rem; background: transparent; color: var(--primary); border: 2px solid var(--primary); border-radius: 4px; font-weight: 700; cursor: pointer; transition: var(--transition); width: 100%; }
         .btn-outline:hover { background: var(--primary); color: #000; }
 
-        section { padding: 80px 5%; }
-        .section-title { text-align: center; font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--primary); margin-bottom: 40px; }
-
+        /* --- Grid Cennika i Usług --- */
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; max-width: 1100px; margin: 0 auto; }
-        .service-card { background: var(--bg-card); padding: 25px; border-radius: 8px; border: 1px solid #333; text-align: center; transition: var(--transition); display: flex; flex-direction: column; justify-content: center; }
-        .service-card:hover { border-color: var(--primary); transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
-        .service-card h3 { color: var(--primary); margin-bottom: 10px; font-size: 1.1rem; }
-        .service-card .price { font-size: 1.5rem; font-weight: bold; margin-bottom: 5px; color: #fff; }
-        .service-card p { color: var(--text-muted); font-size: 0.9rem; }
+        .service-card { background: var(--bg-card); padding: 25px; border-radius: 8px; border: 1px solid #333; text-align: center; transition: var(--transition); display: flex; flex-direction: column; justify-content: space-between; }
+        .service-card:hover { border-color: var(--primary); transform: translateY(-5px); }
+        .service-card h3 { color: var(--primary); margin-bottom: 15px; font-size: 1.1rem; min-height: 45px; display: flex; align-items: center; justify-content: center; }
+        .service-card .price { font-size: 1.8rem; font-weight: bold; margin-bottom: 5px; color: #fff; }
+        .service-card p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 15px; }
 
+        /* --- Opinie --- */
+        .reviews-summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1000px; margin: 0 auto 40px; }
+        .rev-card { background: var(--bg-card); padding: 30px; border-radius: 8px; border: 1px solid #333; text-align: center; }
+        .stars { color: var(--primary); margin-bottom: 15px; }
+        .trustindex-container { background: var(--bg-card); padding: 20px; border-radius: 10px; border: 1px solid #333; max-width: 1200px; margin: 0 auto; }
+
+        /* --- Grid Barberów --- */
         .barber-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; }
-        .barber-card { background: var(--bg-card); padding: 30px 20px; border-radius: 12px; border: 1px solid #333; text-align: center; display: flex; flex-direction: column; align-items: center; transition: var(--transition); }
-        .barber-card:hover { border-color: var(--primary); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
-        .barber-icon { font-size: 2.5rem; color: var(--primary); margin-bottom: 15px; width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; border-radius: 50%; border: 2px solid #333; background: var(--bg-dark); transition: var(--transition); }
-        .barber-card:hover .barber-icon { background: var(--primary); color: #000; border-color: var(--primary); }
-        .role-tag { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); letter-spacing: 1px; margin-bottom: 10px; }
+        .barber-card { background: var(--bg-card); padding: 30px 20px; border-radius: 12px; border: 1px solid #333; text-align: center; transition: var(--transition); }
+        .barber-card:hover { border-color: var(--primary); transform: translateY(-5px); }
+        .barber-icon { font-size: 2.5rem; color: var(--primary); margin-bottom: 15px; width: 80px; height: 80px; border-radius: 50%; border: 2px solid #333; display: flex; align-items: center; justify-content: center; margin-left: auto; margin-right: auto; }
 
-        .iframe-wrapper { background: #fff; border-radius: 12px; overflow: hidden; max-width: 1000px; margin: 0 auto; border: 2px solid var(--primary); box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
-        .iframe-wrapper iframe { width: 100%; height: 700px; border: none; display: block; }
-        
-        .back-link { text-align: center; margin-top: 40px; display: block; color: var(--primary); text-decoration: none; font-weight: 600; cursor: pointer; transition: var(--transition); }
-        .back-link:hover { color: #fff; text-decoration: underline; }
-        
+        /* --- Kontakt --- */
         .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1100px; margin: 0 auto; }
         .info-item { display: flex; gap: 15px; margin-bottom: 20px; }
         .info-item i { color: var(--primary); font-size: 1.3rem; }
         .map iframe { width: 100%; height: 350px; border-radius: 8px; filter: grayscale(1) invert(0.9); border: none; }
 
-        .trustindex-container { background: var(--bg-card); padding: 30px; border-radius: 10px; border: 1px solid #333; max-width: 1200px; margin: 0 auto; }
+        /* --- Iframe --- */
+        .iframe-wrapper { background: #fff; border-radius: 12px; overflow: hidden; max-width: 1000px; margin: 0 auto; border: 2px solid var(--primary); box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
+        .iframe-wrapper iframe { width: 100%; height: 750px; border: none; display: block; }
+        
+        .back-link { text-align: center; margin-top: 40px; display: block; color: var(--primary); text-decoration: none; font-weight: 600; cursor: pointer; }
+        .back-link:hover { text-decoration: underline; }
 
         footer { text-align: center; padding: 40px; background: #0a0a0a; color: #555; border-top: 1px solid #222; margin-top: 50px; }
-
-        .price-note { text-align: center; margin-top: 30px; font-size: 0.9rem; color: var(--text-muted); font-style: italic; }
 
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.2rem; }
@@ -120,9 +128,9 @@
         <div class="hamburger" onclick="toggleMenu()"><i class="fa-solid fa-bars" id="menu-icon"></i></div>
         <nav id="nav-menu">
             <ul>
-                <li><a onclick="goToSection('uslugi')">Usługi</a></li>
-                <li><a onclick="goToSection('opinie')">Opinie</a></li>
-                <li><a onclick="goToSection('kontakt')">Kontakt</a></li>
+                <li><a onclick="goToSection('cennik-home')">Cennik</a></li>
+                <li><a onclick="goToSection('opinie-home')">Opinie</a></li>
+                <li><a onclick="goToSection('kontakt-home')">Kontakt</a></li>
                 <li><a onclick="showBooking()" class="nav-btn">Umów wizytę</a></li>
             </ul>
         </nav>
@@ -137,36 +145,20 @@
             </div>
         </section>
 
-        <section id="uslugi">
-            <h2 class="section-title">Popularne Usługi</h2>
-            <div class="services-grid" style="margin-bottom: 40px;">
-                <div class="service-card">
-                    <h3>Strzyżenie Męskie klasyczne</h3>
-                    <div class="price">65 zł</div>
-                    <p>30 min</p>
-                </div>
-                <div class="service-card">
-                    <h3>Broda</h3>
-                    <div class="price">55 zł</div>
-                    <p>30 min</p>
-                </div>
-                <div class="service-card">
-                    <h3>Combo (włosy+broda)</h3>
-                    <div class="price">95 zł</div>
-                    <p>60 - 90 min</p>
-                </div>
-                <div class="service-card">
-                    <h3>Strzyżenie + odsiwianie</h3>
-                    <div class="price">110 zł</div>
-                    <p>60 min</p>
-                </div>
+        <section id="cennik-home">
+            <h2 class="section-title">Cennik</h2>
+            <div class="services-grid">
+                <div class="service-card"><h3>Strzyżenie Męskie</h3><div class="price">65 zł</div><p>30 min</p></div>
+                <div class="service-card"><h3>Broda</h3><div class="price">55 zł</div><p>30 min</p></div>
+                <div class="service-card"><h3>Combo (Włosy+Broda)</h3><div class="price">95 zł</div><p>60-90 min</p></div>
+                <div class="service-card"><h3>Strzyżenie + Odsiwianie</h3><div class="price">110 zł</div><p>60 min</p></div>
             </div>
-            <div style="text-align: center;">
-                <button onclick="showAllServices()" class="btn-outline">POKAŻ WSZYSTKIE USŁUGI</button>
+            <div style="text-align: center; margin-top: 40px;">
+                <button onclick="showBooking()" class="btn-outline" style="max-width: 300px;">ZOBACZ PEŁNĄ LISTĘ I REZERWUJ</button>
             </div>
         </section>
 
-        <section id="opinie">
+        <section id="opinie-home" style="background: var(--bg-lighter);">
             <h2 class="section-title">Co mówią klienci?</h2>
             <div class="reviews-summary">
                 <div class="rev-card">
@@ -180,12 +172,12 @@
                     <br><strong>- Tomasz</strong>
                 </div>
             </div>
-            <div style="text-align: center;">
-                <button onclick="showReviews()" class="btn-outline" style="border: none; text-decoration: underline;">Zobacz wszystkie opinie z Google</button>
+            <div class="trustindex-container">
+                <script defer async src='https://cdn.trustindex.io/loader.js?8c4c0cc70c4713884156257f556'></script>
             </div>
         </section>
 
-        <section id="kontakt">
+        <section id="kontakt-home">
             <div class="contact-grid">
                 <div>
                     <h2 class="section-title" style="text-align: left; margin-bottom: 20px;">Kontakt</h2>
@@ -194,117 +186,140 @@
                     <div class="info-item"><i class="fa-solid fa-clock"></i><p>Pon-Pt: 8:00 - 19:00 | Sob: 8:00 - 14:00</p></div>
                 </div>
                 <div class="map">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2328.7505364188283!2d18.636906!3d54.266299!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46fd7027c0f86481%3A0xc3f6630b9680ec7c!2sSpokojna%205%2C%2083-000%20Pruszcz%20Gda%C5%84ski!5e0!3m2!1spl!2spl!4v1710000000000!5m2!1spl!2spl" loading="lazy"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2329.834460673413!2d18.636!3d54.264!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTTCsDE1JzUwLjQiTiAxOMKwMzgnMDkuNiJF!5e0!3m2!1spl!2spl!4v1620000000000!5m2!1spl!2spl" loading="lazy"></iframe>
                 </div>
             </div>
-        </section>
-    </main>
-
-    <main id="all-services-view" class="view">
-        <section>
-            <h2 class="section-title">Pełny Cennik Usług</h2>
-            <div class="services-grid">
-                <div class="service-card"><h3>Strzyżenie Męskie klasyczne</h3><div class="price">65 zł</div><p>30 min</p></div>
-                <div class="service-card"><h3>Strzyżenie maszynką</h3><div class="price">55 zł</div><p>30 min</p></div>
-                <div class="service-card"><h3>Broda</h3><div class="price">55 zł</div><p>30 min</p></div>
-                <div class="service-card"><h3>Kontur brody</h3><div class="price">25 zł</div><p>15 min</p></div>
-                <div class="service-card"><h3>Combo (włosy+broda)</h3><div class="price">95 zł</div><p>60 - 90 min</p></div>
-                <div class="service-card"><h3>Combo sama maszynka</h3><div class="price">80 zł</div><p>60 - 90 min</p></div>
-                <div class="service-card"><h3>Fade (boki golarką)</h3><div class="price">70 zł</div><p>30 min</p></div>
-                <div class="service-card"><h3>Odsiwianie</h3><div class="price">50 zł</div><p>30 min</p></div>
-                <div class="service-card"><h3>Strzyżenie + odsiwianie</h3><div class="price">110 zł</div><p>60 min</p></div>
-                <div class="service-card"><h3>Combo + odsiwianie (głowa lub broda)</h3><div class="price">130 zł</div><p>60 - 90 min</p></div>
-                <div class="service-card"><h3>Combo + odsiwianie (głowa + broda)</h3><div class="price">150 zł</div><p>60 - 90 min</p></div>
-                <div class="service-card"><h3>Wosk</h3><div class="price">5 zł</div><p>15 min</p></div>
-            </div>
-            <p class="price-note">* Mycie i modelowanie jest wliczone w cenę wszystkich usług strzyżenia.</p>
-            <div style="text-align: center; margin-top: 50px;">
-                <button onclick="showBooking()" class="btn-large">Zarezerwuj wizytę teraz</button>
-            </div>
-            <a onclick="showHome()" class="back-link"><i class="fa-solid fa-arrow-left"></i> Wróć do strony głównej</a>
         </section>
     </main>
 
     <main id="booking-view" class="view">
         <section>
-            <h2 class="section-title">Wybierz swojego Barbera i usługę</h2>
+            <h2 class="section-title">Wybierz Barbera</h2>
             <div class="barber-grid">
-                
                 <div class="barber-card">
                     <div class="barber-icon"><i class="fa-solid fa-user-tie"></i></div>
-                    <span class="role-tag">Senior Barber</span>
                     <h3>Gosia</h3>
-                    <div style="display: flex; flex-direction: column; gap: 10px; width: 100%; margin-top: 15px;">
-                        <button onclick="openCalendar('Gosia - Strzyżenie', 'https://cal.com/gosia-hcvqvm/30min')" class="btn-outline" style="width:100%; padding:10px; font-size:0.9rem;">Strzyżenie (30 min)</button>
-                        <button onclick="openCalendar('Gosia - Combo', 'https://cal.com/gosia-hcvqvm/combo-włosy-broda-gosia')" class="btn-large" style="width:100%; padding:10px; font-size:0.9rem;">Combo (90 min)</button>
-                    </div>
+                    <br><button onclick="showGosiaServices()" class="btn-large" style="width: 100%;">Wybierz</button>
                 </div>
-
-                <div class="barber-card">
+                <div class="barber-card" style="opacity: 0.6;">
                     <div class="barber-icon"><i class="fa-solid fa-user"></i></div>
-                    <span class="role-tag">Barber</span>
                     <h3>Sara</h3>
-                    <div style="display: flex; flex-direction: column; gap: 10px; width: 100%; margin-top: 15px;">
-                        <button onclick="openCalendar('Sara - Strzyżenie', '#')" class="btn-outline" style="width:100%; padding:10px; font-size:0.9rem;">Strzyżenie (30 min)</button>
-                        <button onclick="openCalendar('Sara - Combo', '#')" class="btn-large" style="width:100%; padding:10px; font-size:0.9rem;">Combo (90 min)</button>
-                    </div>
+                    <br><button class="btn-outline" style="cursor: not-allowed;">Wkrótce</button>
                 </div>
-
-                <div class="barber-card">
+                <div class="barber-card" style="opacity: 0.6;">
                     <div class="barber-icon"><i class="fa-solid fa-user"></i></div>
-                    <span class="role-tag">Barber</span>
                     <h3>Kinga</h3>
-                    <div style="display: flex; flex-direction: column; gap: 10px; width: 100%; margin-top: 15px;">
-                        <button onclick="openCalendar('Kinga - Strzyżenie', '#')" class="btn-outline" style="width:100%; padding:10px; font-size:0.9rem;">Strzyżenie (30 min)</button>
-                        <button onclick="openCalendar('Kinga - Combo', '#')" class="btn-large" style="width:100%; padding:10px; font-size:0.9rem;">Combo (90 min)</button>
-                    </div>
+                    <br><button class="btn-outline" style="cursor: not-allowed;">Wkrótce</button>
+                </div>
+            </div>
+            <a onclick="showHome()" class="back-link"><i class="fa-solid fa-arrow-left"></i> Powrót</a>
+        </section>
+    </main>
+
+    <main id="gosia-services-view" class="view">
+        <section>
+            <h2 class="section-title">Wybierz usługę – Gosia</h2>
+            <div class="services-grid">
+                
+                <div class="service-card" onclick="openCalendar('Strzyżenie Męskie', 'https://cal.com/gosia-hcvqvm/30min')">
+                    <h3>Strzyżenie Męskie klasyczne</h3>
+                    <div class="price">65 zł</div>
+                    <p>30 min</p>
+                    <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
                 </div>
 
-                <div class="barber-card">
-                    <div class="barber-icon"><i class="fa-solid fa-user-check"></i></div>
-                    <span class="role-tag">Senior Barber</span>
-                    <h3>Natalia O.</h3>
-                    <div style="display: flex; flex-direction: column; gap: 10px; width: 100%; margin-top: 15px;">
-                        <button onclick="openCalendar('Natalia O. - Strzyżenie', '#')" class="btn-outline" style="width:100%; padding:10px; font-size:0.9rem;">Strzyżenie (30 min)</button>
-                        <button onclick="openCalendar('Natalia O. - Combo', '#')" class="btn-large" style="width:100%; padding:10px; font-size:0.9rem;">Combo (90 min)</button>
-                    </div>
+                <div class="service-card" onclick="openCalendar('Combo', 'https://cal.com/gosia-hcvqvm/combo-włosy-broda-gosia')">
+                    <h3>Combo (włosy+broda)</h3>
+                    <div class="price">95 zł</div>
+                    <p>60 - 90 min</p>
+                    <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
                 </div>
 
-                <div class="barber-card">
-                    <div class="barber-icon"><i class="fa-solid fa-user-graduate"></i></div>
-                    <span class="role-tag">Junior Barber</span>
-                    <h3>Natalia L.</h3>
-                    <div style="display: flex; flex-direction: column; gap: 10px; width: 100%; margin-top: 15px;">
-                        <button onclick="openCalendar('Natalia L. - Strzyżenie', '#')" class="btn-outline" style="width:100%; padding:10px; font-size:0.9rem;">Strzyżenie (30 min)</button>
-                        <button onclick="openCalendar('Natalia L. - Combo', '#')" class="btn-large" style="width:100%; padding:10px; font-size:0.9rem;">Combo (90 min)</button>
-                    </div>
+                <div class="service-card" onclick="openCalendar('Maszynka', 'https://cal.com/gosia-hcvqvm/strzyzenie-maszynka-gosia')">
+                    <h3>Strzyżenie maszynką</h3>
+                    <div class="price">55 zł</div>
+                    <p>30 min</p>
+                    <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
+                </div>
+
+                <div class="service-card" onclick="openCalendar('Broda', 'https://cal.com/gosia-hcvqvm/broda-gosia')">
+                    <h3>Broda</h3>
+                    <div class="price">55 zł</div>
+                    <p>30 min</p>
+                    <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
+                </div>
+
+                <div class="service-card" onclick="openCalendar('Kontur', 'https://cal.com/gosia-hcvqvm/kontur-brody-gosia')">
+                    <h3>Kontur brody</h3>
+                    <div class="price">25 zł</div>
+                    <p>15 min</p>
+                    <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
+                </div>
+
+                <div class="service-card" onclick="openCalendar('Combo maszynka', 'https://cal.com/gosia-hcvqvm/combo-sama-maszynka-gosia')">
+                    <h3>Combo sama maszynka</h3>
+                    <div class="price">80 zł</div>
+                    <p>60 - 90 min</p>
+                    <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
+                </div>
+
+                <div class="service-card" onclick="openCalendar('Fade', 'https://cal.com/gosia-hcvqvm/fade-boki-golarka-gosia')">
+                    <h3>Fade (boki golarką)</h3>
+                    <div class="price">70 zł</div>
+                    <p>30 min</p>
+                    <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
+                </div>
+
+                <div class="service-card" onclick="openCalendar('Odsiwianie', 'https://cal.com/gosia-hcvqvm/odsiwianie-gosia')">
+                    <h3>Odsiwianie</h3>
+                    <div class="price">50 zł</div>
+                    <p>30 min</p>
+                    <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
+                </div>
+
+                <div class="service-card" onclick="openCalendar('Strzyżenie + Odsiwianie', 'https://cal.com/gosia-hcvqvm/strzyzenie-odsiwianie-gosia')">
+                    <h3>Strzyżenie + odsiwianie</h3>
+                    <div class="price">110 zł</div>
+                    <p>60 min</p>
+                    <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
+                </div>
+
+                <div class="service-card" onclick="openCalendar('Combo + Odsiwianie (1)', 'https://cal.com/gosia-hcvqvm/combo-odsiwianie-głowa-lub-broda-gosia')">
+                    <h3>Combo + odsiwianie (głowa lub broda)</h3>
+                    <div class="price">130 zł</div>
+                    <p>60 - 90 min</p>
+                    <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
+                </div>
+
+                <div class="service-card" onclick="openCalendar('Combo + Odsiwianie (2)', 'https://cal.com/gosia-hcvqvm/combo-odsiwianie-głowa-broda-gosia')">
+                    <h3>Combo + odsiwianie (głowa + broda)</h3>
+                    <div class="price">150 zł</div>
+                    <p>60 - 90 min</p>
+                    <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
+                </div>
+
+                <div class="service-card" onclick="openCalendar('Wosk', 'https://cal.com/gosia-hcvqvm/wosk-gosia')">
+                    <h3>Wosk</h3>
+                    <div class="price">5 zł</div>
+                    <p>15 min</p>
+                    <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
                 </div>
 
             </div>
-            <a onclick="showHome()" class="back-link"><i class="fa-solid fa-arrow-left"></i> Powrót</a>
+            <a onclick="showBooking()" class="back-link"><i class="fa-solid fa-arrow-left"></i> Powrót do wyboru barbera</a>
         </section>
     </main>
 
     <main id="calendar-view" class="view">
         <section>
-            <h2 class="section-title" id="dynamic-name">Terminarz</h2>
+            <h2 class="section-title" id="dynamic-title">Terminarz</h2>
             <div class="iframe-wrapper" id="iframe-container"></div>
-            <a onclick="showBooking()" class="back-link"><i class="fa-solid fa-arrow-left"></i> Zmień fryzjera</a>
-        </section>
-    </main>
-
-    <main id="reviews-view" class="view">
-        <section>
-            <h2 class="section-title">Opinie naszych Klientów</h2>
-            <div class="trustindex-container">
-                <script defer async src='https://cdn.trustindex.io/loader.js?8c4c0cc70c4713884156257f556'></script>
-            </div>
-            <a onclick="showHome()" class="back-link"><i class="fa-solid fa-arrow-left"></i> Powrót</a>
+            <a onclick="showGosiaServices()" class="back-link"><i class="fa-solid fa-arrow-left"></i> Zmień usługę</a>
         </section>
     </main>
 
     <footer>
-        <p>© 2026 Fryzjer Męski Gosia | Pruszcz Gdański. Realizacja: piotr.kotarski17@gmail.com </p>
+        <p>© 2026 Fryzjer Męski Gosia | Pruszcz Gdański. Realizacja: piotr.kotarski17@gmail.com</p>
     </footer>
 
     <script>
@@ -321,9 +336,7 @@
             navMenu.classList.remove('active');
             menuIcon.classList.remove('fa-xmark');
             menuIcon.classList.add('fa-bars');
-
             document.querySelectorAll('.view').forEach(v => v.classList.remove('active-view'));
-
             setTimeout(() => {
                 document.getElementById(viewId).classList.add('active-view');
                 window.scrollTo(0, 0);
@@ -332,12 +345,11 @@
 
         function showHome() { switchView('home-view'); }
         function showBooking() { switchView('booking-view'); }
-        function showReviews() { switchView('reviews-view'); }
-        function showAllServices() { switchView('all-services-view'); }
+        function showGosiaServices() { switchView('gosia-services-view'); }
 
-        function openCalendar(name, url) {
+        function openCalendar(serviceName, url) {
             switchView('calendar-view');
-            document.getElementById('dynamic-name').innerText = "Terminarz: " + name;
+            document.getElementById('dynamic-title').innerText = serviceName;
             document.getElementById('iframe-container').innerHTML = `<iframe src="${url}"></iframe>`;
         }
 
