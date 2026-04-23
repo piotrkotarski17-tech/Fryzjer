@@ -31,7 +31,6 @@
             overflow-x: hidden;
         }
 
-        /* --- Nawigacja --- */
         header {
             background: rgba(18, 18, 18, 0.95); position: fixed; top: 0; width: 100%; z-index: 1000;
             padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center;
@@ -46,39 +45,19 @@
         .nav-btn { background: var(--primary); color: #000 !important; padding: 8px 20px; border-radius: 4px; display: inline-block; }
         .nav-btn:hover { background: var(--primary-hover); transform: translateY(-2px); }
 
-        /* --- Widoki (SPA) + WYRAŹNIEJSZE ANIMACJE --- */
         @keyframes fadeInSlideUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px) scale(0.98); 
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
+            from { opacity: 0; transform: translateY(50px) scale(0.98); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
         }
 
-        .view { 
-            display: none; 
-            padding-top: 100px; 
-            min-height: 100vh;
-        }
-
-        /* Klasa dodawana przez JS w celu uruchomienia animacji */
-        .view.active-view {
-            display: block;
-            animation: fadeInSlideUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-        }
-
+        .view { display: none; padding-top: 100px; min-height: 100vh; }
+        .view.active-view { display: block; animation: fadeInSlideUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
         #home-view.active-view { padding-top: 0; }
 
-        /* --- Hero --- */
         .hero {
             height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center;
-            /* TUTAJ ZMIENIONO NA LOKALNY PLIK 'tlo.jpg' */
             background: linear-gradient(rgba(10, 10, 10, 0.75), rgba(10, 10, 10, 0.85)), 
-                        url('tlo.jpg') 
-                        center/cover no-repeat;
+                        url('tlo.jpg') center/cover no-repeat;
             padding: 0 20px;
         }
         .hero h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; color: var(--primary); margin-bottom: 20px; }
@@ -86,14 +65,12 @@
         
         .btn-large { padding: 15px 40px; font-size: 1.1rem; background: var(--primary); color: #000; border: none; border-radius: 4px; font-weight: 700; cursor: pointer; transition: var(--transition); text-decoration: none; display: inline-block; }
         .btn-large:hover { background: var(--primary-hover); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
-        .btn-outline { padding: 15px 35px; font-size: 1rem; background: transparent; color: var(--primary); border: 2px solid var(--primary); border-radius: 4px; font-weight: 700; cursor: pointer; transition: var(--transition); }
+        .btn-outline { padding: 10px 20px; font-size: 0.9rem; background: transparent; color: var(--primary); border: 2px solid var(--primary); border-radius: 4px; font-weight: 700; cursor: pointer; transition: var(--transition); }
         .btn-outline:hover { background: var(--primary); color: #000; }
 
-        /* --- Sekcje --- */
         section { padding: 80px 5%; }
         .section-title { text-align: center; font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--primary); margin-bottom: 40px; }
 
-        /* --- Usługi --- */
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; max-width: 1100px; margin: 0 auto; }
         .service-card { background: var(--bg-card); padding: 25px; border-radius: 8px; border: 1px solid #333; text-align: center; transition: var(--transition); display: flex; flex-direction: column; justify-content: center; }
         .service-card:hover { border-color: var(--primary); transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
@@ -101,7 +78,6 @@
         .service-card .price { font-size: 1.5rem; font-weight: bold; margin-bottom: 5px; color: #fff; }
         .service-card p { color: var(--text-muted); font-size: 0.9rem; }
 
-        /* --- Wybór Barbera --- */
         .barber-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; }
         .barber-card { background: var(--bg-card); padding: 30px 20px; border-radius: 12px; border: 1px solid #333; text-align: center; display: flex; flex-direction: column; align-items: center; transition: var(--transition); }
         .barber-card:hover { border-color: var(--primary); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
@@ -109,14 +85,12 @@
         .barber-card:hover .barber-icon { background: var(--primary); color: #000; border-color: var(--primary); }
         .role-tag { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); letter-spacing: 1px; margin-bottom: 10px; }
 
-        /* --- Kalendarz Iframe --- */
         .iframe-wrapper { background: #fff; border-radius: 12px; overflow: hidden; max-width: 1000px; margin: 0 auto; border: 2px solid var(--primary); box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
         .iframe-wrapper iframe { width: 100%; height: 700px; border: none; display: block; }
         
         .back-link { text-align: center; margin-top: 40px; display: block; color: var(--primary); text-decoration: none; font-weight: 600; cursor: pointer; transition: var(--transition); }
         .back-link:hover { color: #fff; text-decoration: underline; }
         
-        /* --- Kontakt i Mapa --- */
         .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1100px; margin: 0 auto; }
         .info-item { display: flex; gap: 15px; margin-bottom: 20px; }
         .info-item i { color: var(--primary); font-size: 1.3rem; }
@@ -126,7 +100,6 @@
 
         footer { text-align: center; padding: 40px; background: #0a0a0a; color: #555; border-top: 1px solid #222; margin-top: 50px; }
 
-        /* Wyróżnienie tekstu pod cennikiem */
         .price-note { text-align: center; margin-top: 30px; font-size: 0.9rem; color: var(--text-muted); font-style: italic; }
 
         @media (max-width: 768px) {
@@ -254,43 +227,59 @@
 
     <main id="booking-view" class="view">
         <section>
-            <h2 class="section-title">Wybierz swojego Barbera</h2>
+            <h2 class="section-title">Wybierz swojego Barbera i usługę</h2>
             <div class="barber-grid">
+                
                 <div class="barber-card">
                     <div class="barber-icon"><i class="fa-solid fa-user-tie"></i></div>
                     <span class="role-tag">Senior Barber</span>
                     <h3>Gosia</h3>
-                    <br>
-                    <button onclick="openCalendar('Gosia', 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ3XVT3-rjbiN58ceq9Jxggy5Iu-hELOYmKBAadHh9Bskw3HOQwrE1nnmWJoUmIBwUvsS9rFJsGY?gv=true')" class="btn-large" style="width:100%; padding:12px; font-size:1rem;">Wybierz</button>
+                    <div style="display: flex; flex-direction: column; gap: 10px; width: 100%; margin-top: 15px;">
+                        <button onclick="openCalendar('Gosia - Strzyżenie', 'https://cal.com/gosia-hcvqvm/30min')" class="btn-outline" style="width:100%; padding:10px; font-size:0.9rem;">Strzyżenie (30 min)</button>
+                        <button onclick="openCalendar('Gosia - Combo', 'https://cal.com/gosia-hcvqvm/combo-włosy-broda-gosia')" class="btn-large" style="width:100%; padding:10px; font-size:0.9rem;">Combo (90 min)</button>
+                    </div>
                 </div>
+
                 <div class="barber-card">
                     <div class="barber-icon"><i class="fa-solid fa-user"></i></div>
                     <span class="role-tag">Barber</span>
                     <h3>Sara</h3>
-                    <br>
-                    <button onclick="openCalendar('Sara', 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ007DWuh-zVhbklWFN9ONO16jUpWfrtiLGyezDn_M5xTIYhm7ldCCHavWQ2e60t2oPg2WJjNEeu?gv=true')" class="btn-large" style="width:100%; padding:12px; font-size:1rem;">Wybierz</button>
+                    <div style="display: flex; flex-direction: column; gap: 10px; width: 100%; margin-top: 15px;">
+                        <button onclick="openCalendar('Sara - Strzyżenie', '#')" class="btn-outline" style="width:100%; padding:10px; font-size:0.9rem;">Strzyżenie (30 min)</button>
+                        <button onclick="openCalendar('Sara - Combo', '#')" class="btn-large" style="width:100%; padding:10px; font-size:0.9rem;">Combo (90 min)</button>
+                    </div>
                 </div>
+
                 <div class="barber-card">
                     <div class="barber-icon"><i class="fa-solid fa-user"></i></div>
                     <span class="role-tag">Barber</span>
                     <h3>Kinga</h3>
-                    <br>
-                    <button onclick="openCalendar('Kinga', 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ3wyDCD7MSyZFDW6bFCOaFIOa8UNoZnzMoFIWsGE5OLGosbMw7FUk-x021DvT_rOANHSMN98OoK?gv=true')" class="btn-large" style="width:100%; padding:12px; font-size:1rem;">Wybierz</button>
+                    <div style="display: flex; flex-direction: column; gap: 10px; width: 100%; margin-top: 15px;">
+                        <button onclick="openCalendar('Kinga - Strzyżenie', '#')" class="btn-outline" style="width:100%; padding:10px; font-size:0.9rem;">Strzyżenie (30 min)</button>
+                        <button onclick="openCalendar('Kinga - Combo', '#')" class="btn-large" style="width:100%; padding:10px; font-size:0.9rem;">Combo (90 min)</button>
+                    </div>
                 </div>
+
                 <div class="barber-card">
                     <div class="barber-icon"><i class="fa-solid fa-user-check"></i></div>
                     <span class="role-tag">Senior Barber</span>
                     <h3>Natalia O.</h3>
-                    <br>
-                    <button onclick="openCalendar('Natalia O.', 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ1p4sbfH3re5Kn29HsAy-8vYPkv8NqTEqs2JiamXDULwAeQwP8cgT3Btvr50NIxmfk8wiyGTER6?gv=true')" class="btn-large" style="width:100%; padding:12px; font-size:1rem;">Wybierz</button>
+                    <div style="display: flex; flex-direction: column; gap: 10px; width: 100%; margin-top: 15px;">
+                        <button onclick="openCalendar('Natalia O. - Strzyżenie', '#')" class="btn-outline" style="width:100%; padding:10px; font-size:0.9rem;">Strzyżenie (30 min)</button>
+                        <button onclick="openCalendar('Natalia O. - Combo', '#')" class="btn-large" style="width:100%; padding:10px; font-size:0.9rem;">Combo (90 min)</button>
+                    </div>
                 </div>
+
                 <div class="barber-card">
                     <div class="barber-icon"><i class="fa-solid fa-user-graduate"></i></div>
                     <span class="role-tag">Junior Barber</span>
                     <h3>Natalia L.</h3>
-                    <br>
-                    <button onclick="openCalendar('Natalia L.', 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ2M2KN050pNUXBkwT5QwvJwvTcYS2IlwxRok8tFsHwnX8mefWtnQnajZENazuKArNMzFjdNvkrF?gv=true')" class="btn-large" style="width:100%; padding:12px; font-size:1rem;">Wybierz</button>
+                    <div style="display: flex; flex-direction: column; gap: 10px; width: 100%; margin-top: 15px;">
+                        <button onclick="openCalendar('Natalia L. - Strzyżenie', '#')" class="btn-outline" style="width:100%; padding:10px; font-size:0.9rem;">Strzyżenie (30 min)</button>
+                        <button onclick="openCalendar('Natalia L. - Combo', '#')" class="btn-large" style="width:100%; padding:10px; font-size:0.9rem;">Combo (90 min)</button>
+                    </div>
                 </div>
+
             </div>
             <a onclick="showHome()" class="back-link"><i class="fa-solid fa-arrow-left"></i> Powrót</a>
         </section>
