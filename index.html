@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fryzjer Męski Gosia | Pruszcz Gdański</title>
-    <meta name="description" content="Profesjonalne strzyżenie męskie i barbering w Pruszczu Gdańskim. Zarezerwuj wizytę online u Gosi, Sary i zespołu.">
+    <meta name="description" content="Profesjonalne strzyżenie męskie i barbering w Pruszczu Gdańskim. Zarezerwuj wizytę online u Gosi, Sary, Kingi, Natalii O, Natalii L i zespołu.">
     
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -77,8 +77,13 @@
 
         /* --- Grid Cennika i Usług --- */
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; max-width: 1100px; margin: 0 auto; }
-        .service-card { background: var(--bg-card); padding: 25px; border-radius: 8px; border: 1px solid #333; text-align: center; transition: var(--transition); display: flex; flex-direction: column; justify-content: space-between; }
+        .service-card { background: var(--bg-card); padding: 25px; border-radius: 8px; border: 1px solid #333; text-align: center; transition: var(--transition); display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; }
         .service-card:hover { border-color: var(--primary); transform: translateY(-5px); }
+        
+        /* Karty bez najeżdżania na stronie pełnego cennika */
+        .service-card.static { cursor: default; }
+        .service-card.static:hover { border-color: #333; transform: none; }
+
         .service-card h3 { color: var(--primary); margin-bottom: 15px; font-size: 1.1rem; min-height: 45px; display: flex; align-items: center; justify-content: center; }
         .service-card .price { font-size: 1.8rem; font-weight: bold; margin-bottom: 5px; color: #fff; }
         .service-card p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 15px; }
@@ -148,13 +153,13 @@
         <section id="cennik-home">
             <h2 class="section-title">Cennik</h2>
             <div class="services-grid">
-                <div class="service-card"><h3>Strzyżenie Męskie</h3><div class="price">65 zł</div><p>30 min</p></div>
-                <div class="service-card"><h3>Broda</h3><div class="price">55 zł</div><p>30 min</p></div>
-                <div class="service-card"><h3>Combo (Włosy+Broda)</h3><div class="price">95 zł</div><p>60-90 min</p></div>
-                <div class="service-card"><h3>Strzyżenie + Odsiwianie</h3><div class="price">110 zł</div><p>60 min</p></div>
+                <div class="service-card static"><h3>Strzyżenie Męskie</h3><div class="price">65 zł</div><p>30 min</p></div>
+                <div class="service-card static"><h3>Broda</h3><div class="price">55 zł</div><p>30 min</p></div>
+                <div class="service-card static"><h3>Combo (Włosy+Broda)</h3><div class="price">95 zł</div><p>60-90 min</p></div>
+                <div class="service-card static"><h3>Strzyżenie + Odsiwianie</h3><div class="price">110 zł</div><p>60 min</p></div>
             </div>
             <div style="text-align: center; margin-top: 40px;">
-                <button onclick="showBooking()" class="btn-outline" style="max-width: 300px;">ZOBACZ PEŁNĄ LISTĘ I REZERWUJ</button>
+                <button onclick="showFullPricelist()" class="btn-outline" style="max-width: 300px;">ZOBACZ PEŁNĄ LISTĘ USŁUG</button>
             </div>
         </section>
 
@@ -192,25 +197,132 @@
         </section>
     </main>
 
+    <main id="full-pricelist-view" class="view">
+        <section>
+            <h2 class="section-title">Pełny Cennik Usług</h2>
+            <div class="services-grid">
+                
+                <div class="service-card static">
+                    <h3>Strzyżenie Męskie Klasyczne</h3>
+                    <div class="price">65 zł</div>
+                    <p>30 min</p>
+                </div>
+                
+                <div class="service-card static">
+                    <h3>Combo (Włosy + Broda)</h3>
+                    <div class="price">95 zł</div>
+                    <p>60 - 90 min</p>
+                </div>
+                
+                <div class="service-card static">
+                    <h3>Strzyżenie Maszynką</h3>
+                    <div class="price">55 zł</div>
+                    <p>30 min</p>
+                </div>
+                
+                <div class="service-card static">
+                    <h3>Broda</h3>
+                    <div class="price">55 zł</div>
+                    <p>30 min</p>
+                </div>
+                
+                <div class="service-card static">
+                    <h3>Kontur Brody</h3>
+                    <div class="price">25 zł</div>
+                    <p>15 min</p>
+                </div>
+                
+                <div class="service-card static">
+                    <h3>Combo (sama maszynka)</h3>
+                    <div class="price">80 zł</div>
+                    <p>60 - 90 min</p>
+                </div>
+                
+                <div class="service-card static">
+                    <h3>Fade (boki golarką)</h3>
+                    <div class="price">70 zł</div>
+                    <p>30 min</p>
+                </div>
+                
+                <div class="service-card static">
+                    <h3>Odsiwianie</h3>
+                    <div class="price">50 zł</div>
+                    <p>30 min</p>
+                </div>
+                
+                <div class="service-card static">
+                    <h3>Strzyżenie + odsiwianie</h3>
+                    <div class="price">110 zł</div>
+                    <p>60 min</p>
+                </div>
+                
+                <div class="service-card static">
+                    <h3>Combo + odsiwianie (głowa/broda)</h3>
+                    <div class="price">130 zł</div>
+                    <p>60 - 90 min</p>
+                </div>
+                
+                <div class="service-card static">
+                    <h3>Combo + odsiwianie (głowa+broda)</h3>
+                    <div class="price">150 zł</div>
+                    <p>60 - 90 min</p>
+                </div>
+                
+                <div class="service-card static">
+                    <h3>Wosk</h3>
+                    <div class="price">5 zł</div>
+                    <p>15 min</p>
+                </div>
+                
+            </div>
+
+            <div style="text-align: center; margin-top: 50px;">
+                <button onclick="showBooking()" class="btn-large">REZERWUJ WIZYTĘ ONLINE</button>
+            </div>
+            <a onclick="showHome()" class="back-link"><i class="fa-solid fa-arrow-left"></i> Wróć na stronę główną</a>
+        </section>
+    </main>
+
     <main id="booking-view" class="view">
         <section>
             <h2 class="section-title">Wybierz Barbera</h2>
             <div class="barber-grid">
+                
                 <div class="barber-card">
                     <div class="barber-icon"><i class="fa-solid fa-user-tie"></i></div>
                     <h3>Gosia</h3>
-                    <br><button onclick="showGosiaServices()" class="btn-large" style="width: 100%;">Wybierz</button>
+                    <span style="display:block; color: var(--text-muted); font-size: 0.8rem; margin-top: -5px; margin-bottom: 15px;">Senior Barber</span>
+                    <button onclick="showGosiaServices()" class="btn-large" style="width: 100%;">Wybierz</button>
                 </div>
-                <div class="barber-card" style="opacity: 0.6;">
+                
+                <div class="barber-card">
                     <div class="barber-icon"><i class="fa-solid fa-user"></i></div>
                     <h3>Sara</h3>
-                    <br><button class="btn-outline" style="cursor: not-allowed;">Wkrótce</button>
+                    <span style="display:block; color: var(--text-muted); font-size: 0.8rem; margin-top: -5px; margin-bottom: 15px;">Barber</span>
+                    <button onclick="showSaraServices()" class="btn-large" style="width: 100%;">Wybierz</button>
                 </div>
-                <div class="barber-card" style="opacity: 0.6;">
+                
+                <div class="barber-card">
                     <div class="barber-icon"><i class="fa-solid fa-user"></i></div>
                     <h3>Kinga</h3>
-                    <br><button class="btn-outline" style="cursor: not-allowed;">Wkrótce</button>
+                    <span style="display:block; color: var(--text-muted); font-size: 0.8rem; margin-top: -5px; margin-bottom: 15px;">Barber</span>
+                    <button onclick="showKingaServices()" class="btn-large" style="width: 100%;">Wybierz</button>
                 </div>
+
+                <div class="barber-card">
+                    <div class="barber-icon"><i class="fa-solid fa-user"></i></div>
+                    <h3>Natalia O</h3>
+                    <span style="display:block; color: var(--text-muted); font-size: 0.8rem; margin-top: -5px; margin-bottom: 15px;">Senior Barber</span>
+                    <button onclick="showNataliaOServices()" class="btn-large" style="width: 100%;">Wybierz</button>
+                </div>
+                
+                <div class="barber-card">
+                    <div class="barber-icon"><i class="fa-solid fa-user"></i></div>
+                    <h3>Natalia L</h3>
+                    <span style="display:block; color: var(--text-muted); font-size: 0.8rem; margin-top: -5px; margin-bottom: 15px;">Junior Barber</span>
+                    <button onclick="showNataliaLServices()" class="btn-large" style="width: 100%;">Wybierz</button>
+                </div>
+                
             </div>
             <a onclick="showHome()" class="back-link"><i class="fa-solid fa-arrow-left"></i> Powrót</a>
         </section>
@@ -220,91 +332,402 @@
         <section>
             <h2 class="section-title">Wybierz usługę – Gosia</h2>
             <div class="services-grid">
-                
                 <div class="service-card" onclick="openCalendar('Strzyżenie Męskie', 'https://cal.com/gosia-hcvqvm/30min')">
                     <h3>Strzyżenie Męskie klasyczne</h3>
                     <div class="price">65 zł</div>
                     <p>30 min</p>
                     <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
                 </div>
-
                 <div class="service-card" onclick="openCalendar('Combo', 'https://cal.com/gosia-hcvqvm/combo-włosy-broda-gosia')">
                     <h3>Combo (włosy+broda)</h3>
                     <div class="price">95 zł</div>
                     <p>60 - 90 min</p>
                     <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
                 </div>
-
                 <div class="service-card" onclick="openCalendar('Maszynka', 'https://cal.com/gosia-hcvqvm/strzyzenie-maszynka-gosia')">
                     <h3>Strzyżenie maszynką</h3>
                     <div class="price">55 zł</div>
                     <p>30 min</p>
                     <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
                 </div>
-
                 <div class="service-card" onclick="openCalendar('Broda', 'https://cal.com/gosia-hcvqvm/broda-gosia')">
                     <h3>Broda</h3>
                     <div class="price">55 zł</div>
                     <p>30 min</p>
                     <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
                 </div>
-
                 <div class="service-card" onclick="openCalendar('Kontur', 'https://cal.com/gosia-hcvqvm/kontur-brody-gosia')">
                     <h3>Kontur brody</h3>
                     <div class="price">25 zł</div>
                     <p>15 min</p>
                     <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
                 </div>
-
                 <div class="service-card" onclick="openCalendar('Combo maszynka', 'https://cal.com/gosia-hcvqvm/combo-sama-maszynka-gosia')">
                     <h3>Combo sama maszynka</h3>
                     <div class="price">80 zł</div>
                     <p>60 - 90 min</p>
                     <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
                 </div>
-
                 <div class="service-card" onclick="openCalendar('Fade', 'https://cal.com/gosia-hcvqvm/fade-boki-golarka-gosia')">
                     <h3>Fade (boki golarką)</h3>
                     <div class="price">70 zł</div>
                     <p>30 min</p>
                     <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
                 </div>
-
                 <div class="service-card" onclick="openCalendar('Odsiwianie', 'https://cal.com/gosia-hcvqvm/odsiwianie-gosia')">
                     <h3>Odsiwianie</h3>
                     <div class="price">50 zł</div>
                     <p>30 min</p>
                     <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
                 </div>
-
                 <div class="service-card" onclick="openCalendar('Strzyżenie + Odsiwianie', 'https://cal.com/gosia-hcvqvm/strzyzenie-odsiwianie-gosia')">
                     <h3>Strzyżenie + odsiwianie</h3>
                     <div class="price">110 zł</div>
                     <p>60 min</p>
                     <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
                 </div>
-
                 <div class="service-card" onclick="openCalendar('Combo + Odsiwianie (1)', 'https://cal.com/gosia-hcvqvm/combo-odsiwianie-głowa-lub-broda-gosia')">
                     <h3>Combo + odsiwianie (głowa lub broda)</h3>
                     <div class="price">130 zł</div>
                     <p>60 - 90 min</p>
                     <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
                 </div>
-
                 <div class="service-card" onclick="openCalendar('Combo + Odsiwianie (2)', 'https://cal.com/gosia-hcvqvm/combo-odsiwianie-głowa-broda-gosia')">
                     <h3>Combo + odsiwianie (głowa + broda)</h3>
                     <div class="price">150 zł</div>
                     <p>60 - 90 min</p>
                     <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
                 </div>
-
                 <div class="service-card" onclick="openCalendar('Wosk', 'https://cal.com/gosia-hcvqvm/wosk-gosia')">
                     <h3>Wosk</h3>
                     <div class="price">5 zł</div>
                     <p>15 min</p>
                     <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
                 </div>
+            </div>
+            <a onclick="showBooking()" class="back-link"><i class="fa-solid fa-arrow-left"></i> Powrót do wyboru barbera</a>
+        </section>
+    </main>
 
+    <main id="sara-services-view" class="view">
+        <section>
+            <h2 class="section-title">Wybierz usługę – Sara</h2>
+            <div class="services-grid">
+                <div class="service-card" onclick="openCalendar('Strzyżenie Męskie Klasyczne', 'https://cal.com/sara-v2sckb/30min')">
+                    <h3>Strzyżenie Męskie Klasyczne</h3>
+                    <div class="price">65 zł</div>
+                    <p>30 min</p>
+                    <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
+                </div>
+                <div class="service-card" onclick="openCalendar('Combo (Włosy + Broda)', 'https://cal.com/sara-v2sckb/combo-włosy-broda')">
+                    <h3>Combo (Włosy + Broda)</h3>
+                    <div class="price">95 zł</div>
+                    <p>60 - 90 min</p>
+                    <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
+                </div>
+                <div class="service-card" onclick="openCalendar('Strzyżenie Maszynką', 'https://cal.com/sara-v2sckb/strzyzenie-maszynka')">
+                    <h3>Strzyżenie Maszynką</h3>
+                    <div class="price">55 zł</div>
+                    <p>30 min</p>
+                    <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
+                </div>
+                <div class="service-card" onclick="openCalendar('Broda', 'https://cal.com/sara-v2sckb/broda')">
+                    <h3>Broda</h3>
+                    <div class="price">55 zł</div>
+                    <p>30 min</p>
+                    <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
+                </div>
+                <div class="service-card" onclick="openCalendar('Kontur Brody', 'https://cal.com/sara-v2sckb/kontur-brody')">
+                    <h3>Kontur Brody</h3>
+                    <div class="price">25 zł</div>
+                    <p>15 min</p>
+                    <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
+                </div>
+                <div class="service-card" onclick="openCalendar('Combo (sama maszynka)', 'https://cal.com/sara-v2sckb/combo-sama-maszynka')">
+                    <h3>Combo (sama maszynka)</h3>
+                    <div class="price">80 zł</div>
+                    <p>60 - 90 min</p>
+                    <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
+                </div>
+                <div class="service-card" onclick="openCalendar('Fade (boki golarką)', 'https://cal.com/sara-v2sckb/fade-boki-golarka')">
+                    <h3>Fade (boki golarką)</h3>
+                    <div class="price">70 zł</div>
+                    <p>30 min</p>
+                    <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
+                </div>
+                <div class="service-card" onclick="openCalendar('Odsiwianie', 'https://cal.com/sara-v2sckb/odsiwianie')">
+                    <h3>Odsiwianie</h3>
+                    <div class="price">50 zł</div>
+                    <p>30 min</p>
+                    <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
+                </div>
+                <div class="service-card" onclick="openCalendar('Strzyżenie + odsiwianie', 'https://cal.com/sara-v2sckb/strzyzenie-odsiwianie')">
+                    <h3>Strzyżenie + odsiwianie</h3>
+                    <div class="price">110 zł</div>
+                    <p>60 min</p>
+                    <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
+                </div>
+                <div class="service-card" onclick="openCalendar('Combo + odsiwianie (1)', 'https://cal.com/sara-v2sckb/combo-odsiwianie-głowa-lub-broda')">
+                    <h3>Combo + odsiwianie (głowa lub broda)</h3>
+                    <div class="price">130 zł</div>
+                    <p>60 - 90 min</p>
+                    <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
+                </div>
+                <div class="service-card" onclick="openCalendar('Combo + odsiwianie (2)', 'https://cal.com/sara-v2sckb/combo-odsiwianie-głowa-broda')">
+                    <h3>Combo + odsiwianie (głowa + broda)</h3>
+                    <div class="price">150 zł</div>
+                    <p>60 - 90 min</p>
+                    <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
+                </div>
+                <div class="service-card" onclick="openCalendar('Wosk', 'https://cal.com/sara-v2sckb/wosk')">
+                    <h3>Wosk</h3>
+                    <div class="price">5 zł</div>
+                    <p>15 min</p>
+                    <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
+                </div>
+            </div>
+            <a onclick="showBooking()" class="back-link"><i class="fa-solid fa-arrow-left"></i> Powrót do wyboru barbera</a>
+        </section>
+    </main>
+
+    <main id="kinga-services-view" class="view">
+        <section>
+            <h2 class="section-title">Wybierz usługę – Kinga</h2>
+            <div class="services-grid">
+                <div class="service-card" onclick="openCalendar('Strzyżenie Męskie Klasyczne', 'https://cal.com/kinga-dgrsyx/30min')">
+                    <h3>Strzyżenie Męskie Klasyczne</h3>
+                    <div class="price">65 zł</div>
+                    <p>30 min</p>
+                    <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
+                </div>
+                <div class="service-card" onclick="openCalendar('Combo (Włosy + Broda)', 'https://cal.com/kinga-dgrsyx/combo-włosy-broda')">
+                    <h3>Combo (Włosy + Broda)</h3>
+                    <div class="price">95 zł</div>
+                    <p>60 - 90 min</p>
+                    <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
+                </div>
+                <div class="service-card" onclick="openCalendar('Strzyżenie Maszynką', 'https://cal.com/kinga-dgrsyx/strzyzenie-maszynka')">
+                    <h3>Strzyżenie Maszynką</h3>
+                    <div class="price">55 zł</div>
+                    <p>30 min</p>
+                    <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
+                </div>
+                <div class="service-card" onclick="openCalendar('Broda', 'https://cal.com/kinga-dgrsyx/broda')">
+                    <h3>Broda</h3>
+                    <div class="price">55 zł</div>
+                    <p>30 min</p>
+                    <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
+                </div>
+                <div class="service-card" onclick="openCalendar('Kontur Brody', 'https://cal.com/kinga-dgrsyx/kontur-brody')">
+                    <h3>Kontur Brody</h3>
+                    <div class="price">25 zł</div>
+                    <p>15 min</p>
+                    <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
+                </div>
+                <div class="service-card" onclick="openCalendar('Combo (sama maszynka)', 'https://cal.com/kinga-dgrsyx/combo-sama-maszynka')">
+                    <h3>Combo (sama maszynka)</h3>
+                    <div class="price">80 zł</div>
+                    <p>60 - 90 min</p>
+                    <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
+                </div>
+                <div class="service-card" onclick="openCalendar('Fade (boki golarką)', 'https://cal.com/kinga-dgrsyx/fade-boki-golarka')">
+                    <h3>Fade (boki golarką)</h3>
+                    <div class="price">70 zł</div>
+                    <p>30 min</p>
+                    <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
+                </div>
+                <div class="service-card" onclick="openCalendar('Odsiwianie', 'https://cal.com/kinga-dgrsyx/odsiwianie')">
+                    <h3>Odsiwianie</h3>
+                    <div class="price">50 zł</div>
+                    <p>30 min</p>
+                    <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
+                </div>
+                <div class="service-card" onclick="openCalendar('Strzyżenie + odsiwianie', 'https://cal.com/kinga-dgrsyx/strzyzenie-odsiwianie')">
+                    <h3>Strzyżenie + odsiwianie</h3>
+                    <div class="price">110 zł</div>
+                    <p>60 min</p>
+                    <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
+                </div>
+                <div class="service-card" onclick="openCalendar('Combo + odsiwianie (1)', 'https://cal.com/kinga-dgrsyx/combo-odsiwianie-głowa-lub-broda')">
+                    <h3>Combo + odsiwianie (głowa lub broda)</h3>
+                    <div class="price">130 zł</div>
+                    <p>60 - 90 min</p>
+                    <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
+                </div>
+                <div class="service-card" onclick="openCalendar('Combo + odsiwianie (2)', 'https://cal.com/kinga-dgrsyx/combo-odsiwianie-głowa-broda')">
+                    <h3>Combo + odsiwianie (głowa + broda)</h3>
+                    <div class="price">150 zł</div>
+                    <p>60 - 90 min</p>
+                    <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
+                </div>
+                <div class="service-card" onclick="openCalendar('Wosk', 'https://cal.com/kinga-dgrsyx/wosk')">
+                    <h3>Wosk</h3>
+                    <div class="price">5 zł</div>
+                    <p>15 min</p>
+                    <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
+                </div>
+            </div>
+            <a onclick="showBooking()" class="back-link"><i class="fa-solid fa-arrow-left"></i> Powrót do wyboru barbera</a>
+        </section>
+    </main>
+
+    <main id="natalia-o-services-view" class="view">
+        <section>
+            <h2 class="section-title">Wybierz usługę – Natalia O</h2>
+            <div class="services-grid">
+                <div class="service-card" onclick="openCalendar('Strzyżenie Męskie Klasyczne', 'https://cal.com/natalia-o-skt6pp/30min')">
+                    <h3>Strzyżenie Męskie Klasyczne</h3>
+                    <div class="price">65 zł</div>
+                    <p>30 min</p>
+                    <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
+                </div>
+                <div class="service-card" onclick="openCalendar('Combo (Włosy + Broda)', 'https://cal.com/natalia-o-skt6pp/combo-włosy-broda')">
+                    <h3>Combo (Włosy + Broda)</h3>
+                    <div class="price">95 zł</div>
+                    <p>60 - 90 min</p>
+                    <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
+                </div>
+                <div class="service-card" onclick="openCalendar('Strzyżenie Maszynką', 'https://cal.com/natalia-o-skt6pp/strzyzenie-maszynka')">
+                    <h3>Strzyżenie Maszynką</h3>
+                    <div class="price">55 zł</div>
+                    <p>30 min</p>
+                    <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
+                </div>
+                <div class="service-card" onclick="openCalendar('Broda', 'https://cal.com/natalia-o-skt6pp/broda')">
+                    <h3>Broda</h3>
+                    <div class="price">55 zł</div>
+                    <p>30 min</p>
+                    <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
+                </div>
+                <div class="service-card" onclick="openCalendar('Kontur Brody', 'https://cal.com/natalia-o-skt6pp/kontur-brody')">
+                    <h3>Kontur Brody</h3>
+                    <div class="price">25 zł</div>
+                    <p>15 min</p>
+                    <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
+                </div>
+                <div class="service-card" onclick="openCalendar('Combo (sama maszynka)', 'https://cal.com/natalia-o-skt6pp/combo-sama-maszynka')">
+                    <h3>Combo (sama maszynka)</h3>
+                    <div class="price">80 zł</div>
+                    <p>60 - 90 min</p>
+                    <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
+                </div>
+                <div class="service-card" onclick="openCalendar('Fade (boki golarką)', 'https://cal.com/natalia-o-skt6pp/fade-boki-golarka')">
+                    <h3>Fade (boki golarką)</h3>
+                    <div class="price">70 zł</div>
+                    <p>30 min</p>
+                    <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
+                </div>
+                <div class="service-card" onclick="openCalendar('Odsiwianie', 'https://cal.com/natalia-o-skt6pp/odsiwianie')">
+                    <h3>Odsiwianie</h3>
+                    <div class="price">50 zł</div>
+                    <p>30 min</p>
+                    <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
+                </div>
+                <div class="service-card" onclick="openCalendar('Strzyżenie + odsiwianie', 'https://cal.com/natalia-o-skt6pp/strzyzenie-odsiwianie')">
+                    <h3>Strzyżenie + odsiwianie</h3>
+                    <div class="price">110 zł</div>
+                    <p>60 min</p>
+                    <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
+                </div>
+                <div class="service-card" onclick="openCalendar('Combo + odsiwianie (1)', 'https://cal.com/natalia-o-skt6pp/combo-odsiwianie-głowa-lub-broda')">
+                    <h3>Combo + odsiwianie (głowa lub broda)</h3>
+                    <div class="price">130 zł</div>
+                    <p>60 - 90 min</p>
+                    <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
+                </div>
+                <div class="service-card" onclick="openCalendar('Combo + odsiwianie (2)', 'https://cal.com/natalia-o-skt6pp/combo-odsiwianie-głowa-broda')">
+                    <h3>Combo + odsiwianie (głowa + broda)</h3>
+                    <div class="price">150 zł</div>
+                    <p>60 - 90 min</p>
+                    <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
+                </div>
+                <div class="service-card" onclick="openCalendar('Wosk', 'https://cal.com/natalia-o-skt6pp/wosk')">
+                    <h3>Wosk</h3>
+                    <div class="price">5 zł</div>
+                    <p>15 min</p>
+                    <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
+                </div>
+            </div>
+            <a onclick="showBooking()" class="back-link"><i class="fa-solid fa-arrow-left"></i> Powrót do wyboru barbera</a>
+        </section>
+    </main>
+
+    <main id="natalia-l-services-view" class="view">
+        <section>
+            <h2 class="section-title">Wybierz usługę – Natalia L</h2>
+            <div class="services-grid">
+                <div class="service-card" onclick="openCalendar('Strzyżenie Męskie Klasyczne', 'https://cal.com/natalia-l-qyeohi/30min')">
+                    <h3>Strzyżenie Męskie Klasyczne</h3>
+                    <div class="price">65 zł</div>
+                    <p>30 min</p>
+                    <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
+                </div>
+                <div class="service-card" onclick="openCalendar('Combo (Włosy + Broda)', 'https://cal.com/natalia-l-qyeohi/combo-włosy-broda')">
+                    <h3>Combo (Włosy + Broda)</h3>
+                    <div class="price">95 zł</div>
+                    <p>60 - 90 min</p>
+                    <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
+                </div>
+                <div class="service-card" onclick="openCalendar('Strzyżenie Maszynką', 'https://cal.com/natalia-l-qyeohi/strzyzenie-maszynka')">
+                    <h3>Strzyżenie Maszynką</h3>
+                    <div class="price">55 zł</div>
+                    <p>30 min</p>
+                    <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
+                </div>
+                <div class="service-card" onclick="openCalendar('Broda', 'https://cal.com/natalia-l-qyeohi/broda')">
+                    <h3>Broda</h3>
+                    <div class="price">55 zł</div>
+                    <p>30 min</p>
+                    <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
+                </div>
+                <div class="service-card" onclick="openCalendar('Kontur Brody', 'https://cal.com/natalia-l-qyeohi/kontur-brody')">
+                    <h3>Kontur Brody</h3>
+                    <div class="price">25 zł</div>
+                    <p>15 min</p>
+                    <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
+                </div>
+                <div class="service-card" onclick="openCalendar('Combo (sama maszynka)', 'https://cal.com/natalia-l-qyeohi/combo-sama-maszynka')">
+                    <h3>Combo (sama maszynka)</h3>
+                    <div class="price">80 zł</div>
+                    <p>60 - 90 min</p>
+                    <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
+                </div>
+                <div class="service-card" onclick="openCalendar('Fade (boki golarką)', 'https://cal.com/natalia-l-qyeohi/fade-boki-golarka')">
+                    <h3>Fade (boki golarką)</h3>
+                    <div class="price">70 zł</div>
+                    <p>30 min</p>
+                    <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
+                </div>
+                <div class="service-card" onclick="openCalendar('Odsiwianie', 'https://cal.com/natalia-l-qyeohi/odsiwianie')">
+                    <h3>Odsiwianie</h3>
+                    <div class="price">50 zł</div>
+                    <p>30 min</p>
+                    <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
+                </div>
+                <div class="service-card" onclick="openCalendar('Strzyżenie + odsiwianie', 'https://cal.com/natalia-l-qyeohi/strzyzenie-odsiwianie')">
+                    <h3>Strzyżenie + odsiwianie</h3>
+                    <div class="price">110 zł</div>
+                    <p>60 min</p>
+                    <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
+                </div>
+                <div class="service-card" onclick="openCalendar('Combo + odsiwianie (1)', 'https://cal.com/natalia-l-qyeohi/combo-odsiwianie-głowa-lub-broda')">
+                    <h3>Combo + odsiwianie (głowa lub broda)</h3>
+                    <div class="price">130 zł</div>
+                    <p>60 - 90 min</p>
+                    <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
+                </div>
+                <div class="service-card" onclick="openCalendar('Combo + odsiwianie (2)', 'https://cal.com/natalia-l-qyeohi/combo-odsiwianie-głowa-broda')">
+                    <h3>Combo + odsiwianie (głowa + broda)</h3>
+                    <div class="price">150 zł</div>
+                    <p>60 - 90 min</p>
+                    <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
+                </div>
+                <div class="service-card" onclick="openCalendar('Wosk', 'https://cal.com/natalia-l-qyeohi/wosk')">
+                    <h3>Wosk</h3>
+                    <div class="price">5 zł</div>
+                    <p>15 min</p>
+                    <button class="btn-outline">REZERWUJĘ TĘ USŁUGĘ</button>
+                </div>
             </div>
             <a onclick="showBooking()" class="back-link"><i class="fa-solid fa-arrow-left"></i> Powrót do wyboru barbera</a>
         </section>
@@ -314,7 +737,7 @@
         <section>
             <h2 class="section-title" id="dynamic-title">Terminarz</h2>
             <div class="iframe-wrapper" id="iframe-container"></div>
-            <a onclick="showGosiaServices()" class="back-link"><i class="fa-solid fa-arrow-left"></i> Zmień usługę</a>
+            <a onclick="goBackToServices()" class="back-link"><i class="fa-solid fa-arrow-left"></i> Zmień usługę</a>
         </section>
     </main>
 
@@ -325,6 +748,8 @@
     <script>
         const navMenu = document.getElementById('nav-menu');
         const menuIcon = document.getElementById('menu-icon');
+        
+        let currentBarberView = 'gosia-services-view';
 
         function toggleMenu() {
             navMenu.classList.toggle('active');
@@ -344,13 +769,42 @@
         }
 
         function showHome() { switchView('home-view'); }
+        function showFullPricelist() { switchView('full-pricelist-view'); }
         function showBooking() { switchView('booking-view'); }
-        function showGosiaServices() { switchView('gosia-services-view'); }
+        
+        function showGosiaServices() { 
+            currentBarberView = 'gosia-services-view';
+            switchView('gosia-services-view'); 
+        }
+
+        function showSaraServices() { 
+            currentBarberView = 'sara-services-view';
+            switchView('sara-services-view'); 
+        }
+
+        function showKingaServices() { 
+            currentBarberView = 'kinga-services-view';
+            switchView('kinga-services-view'); 
+        }
+
+        function showNataliaOServices() { 
+            currentBarberView = 'natalia-o-services-view';
+            switchView('natalia-o-services-view'); 
+        }
+
+        function showNataliaLServices() { 
+            currentBarberView = 'natalia-l-services-view';
+            switchView('natalia-l-services-view'); 
+        }
 
         function openCalendar(serviceName, url) {
             switchView('calendar-view');
             document.getElementById('dynamic-title').innerText = serviceName;
             document.getElementById('iframe-container').innerHTML = `<iframe src="${url}"></iframe>`;
+        }
+
+        function goBackToServices() {
+            switchView(currentBarberView);
         }
 
         function goToSection(id) {
