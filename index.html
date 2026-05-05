@@ -98,7 +98,18 @@
         .barber-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; }
         .barber-card { background: var(--bg-card); padding: 30px 20px; border-radius: 12px; border: 1px solid #333; text-align: center; transition: var(--transition); }
         .barber-card:hover { border-color: var(--primary); transform: translateY(-5px); }
-        .barber-icon { font-size: 2.5rem; color: var(--primary); margin-bottom: 15px; width: 80px; height: 80px; border-radius: 50%; border: 2px solid #333; display: flex; align-items: center; justify-content: center; margin-left: auto; margin-right: auto; }
+        
+        /* Klasa do okrągłych zdjęć barberów */
+        .barber-photo { 
+            width: 90px; 
+            height: 90px; 
+            border-radius: 50%; 
+            object-fit: cover; 
+            border: 2px solid var(--primary); 
+            margin: 0 auto 15px auto; 
+            display: block; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+        }
 
         /* --- Kontakt --- */
         .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1100px; margin: 0 auto; }
@@ -177,8 +188,6 @@
                     <br><strong>- Tomasz</strong>
                 </div>
             </div>
-        
-            </div>
         </section>
 
         <section id="kontakt-home">
@@ -200,79 +209,66 @@
         <section>
             <h2 class="section-title">Pełny Cennik Usług</h2>
             <div class="services-grid">
-                
                 <div class="service-card static">
                     <h3>Strzyżenie Męskie Klasyczne</h3>
                     <div class="price">65 zł</div>
                     <p>30 min</p>
                 </div>
-                
                 <div class="service-card static">
                     <h3>Combo (Włosy + Broda)</h3>
                     <div class="price">95 zł</div>
                     <p>60 - 90 min</p>
                 </div>
-                
                 <div class="service-card static">
                     <h3>Strzyżenie Maszynką</h3>
                     <div class="price">55 zł</div>
                     <p>30 min</p>
                 </div>
-                
                 <div class="service-card static">
                     <h3>Broda</h3>
                     <div class="price">55 zł</div>
                     <p>30 min</p>
                 </div>
-                
                 <div class="service-card static">
                     <h3>Kontur Brody</h3>
                     <div class="price">25 zł</div>
                     <p>15 min</p>
                 </div>
-                
                 <div class="service-card static">
                     <h3>Combo (sama maszynka)</h3>
                     <div class="price">80 zł</div>
                     <p>60 - 90 min</p>
                 </div>
-                
                 <div class="service-card static">
                     <h3>Fade (boki golarką)</h3>
                     <div class="price">70 zł</div>
                     <p>30 min</p>
                 </div>
-                
                 <div class="service-card static">
                     <h3>Odsiwianie</h3>
                     <div class="price">50 zł</div>
                     <p>30 min</p>
                 </div>
-                
                 <div class="service-card static">
                     <h3>Strzyżenie + odsiwianie</h3>
                     <div class="price">110 zł</div>
                     <p>60 min</p>
                 </div>
-                
                 <div class="service-card static">
                     <h3>Combo + odsiwianie (głowa/broda)</h3>
                     <div class="price">130 zł</div>
                     <p>60 - 90 min</p>
                 </div>
-                
                 <div class="service-card static">
                     <h3>Combo + odsiwianie (głowa+broda)</h3>
                     <div class="price">150 zł</div>
                     <p>60 - 90 min</p>
                 </div>
-                
                 <div class="service-card static">
                     <h3>Wosk</h3>
                     <div class="price">5 zł</div>
                     <p>15 min</p>
                 </div>
-                
             </div>
 
             <div style="text-align: center; margin-top: 50px;">
@@ -288,35 +284,35 @@
             <div class="barber-grid">
                 
                 <div class="barber-card">
-                    <div class="barber-icon"><i class="fa-solid fa-user-tie"></i></div>
+                    <img src="Gosia.jpg" alt="Gosia - Senior Barber" class="barber-photo">
                     <h3>Gosia</h3>
                     <span style="display:block; color: var(--text-muted); font-size: 0.8rem; margin-top: -5px; margin-bottom: 15px;">Senior Barber</span>
                     <button onclick="showGosiaServices()" class="btn-large" style="width: 100%;">Wybierz</button>
                 </div>
                 
                 <div class="barber-card">
-                    <div class="barber-icon"><i class="fa-solid fa-user"></i></div>
+                    <img src="Sara.jpg" alt="Sara - Barber" class="barber-photo">
                     <h3>Sara</h3>
                     <span style="display:block; color: var(--text-muted); font-size: 0.8rem; margin-top: -5px; margin-bottom: 15px;">Barber</span>
                     <button onclick="showSaraServices()" class="btn-large" style="width: 100%;">Wybierz</button>
                 </div>
                 
                 <div class="barber-card">
-                    <div class="barber-icon"><i class="fa-solid fa-user"></i></div>
+                    <img src="Kinga.jpg" alt="Kinga - Barber" class="barber-photo">
                     <h3>Kinga</h3>
                     <span style="display:block; color: var(--text-muted); font-size: 0.8rem; margin-top: -5px; margin-bottom: 15px;">Barber</span>
                     <button onclick="showKingaServices()" class="btn-large" style="width: 100%;">Wybierz</button>
                 </div>
 
                 <div class="barber-card">
-                    <div class="barber-icon"><i class="fa-solid fa-user"></i></div>
+                    <img src="NataliaO.jpg" alt="Natalia O - Senior Barber" class="barber-photo">
                     <h3>Natalia O</h3>
                     <span style="display:block; color: var(--text-muted); font-size: 0.8rem; margin-top: -5px; margin-bottom: 15px;">Senior Barber</span>
                     <button onclick="showNataliaOServices()" class="btn-large" style="width: 100%;">Wybierz</button>
                 </div>
                 
                 <div class="barber-card">
-                    <div class="barber-icon"><i class="fa-solid fa-user"></i></div>
+                    <img src="NataliaL.jpg" alt="Natalia L - Junior Barber" class="barber-photo">
                     <h3>Natalia L</h3>
                     <span style="display:block; color: var(--text-muted); font-size: 0.8rem; margin-top: -5px; margin-bottom: 15px;">Junior Barber</span>
                     <button onclick="showNataliaLServices()" class="btn-large" style="width: 100%;">Wybierz</button>
