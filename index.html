@@ -793,9 +793,11 @@
         }
 
         function openCalendar(serviceName, url) {
+            // Domyślny kierunkowy +48 (Cal.com błędnie wykrywa Szwecję)
+            const fullUrl = url + (url.includes('?') ? '&' : '?') + 'attendeePhoneNumber=%2B48';
             switchView('calendar-view');
             document.getElementById('dynamic-title').innerText = serviceName;
-            document.getElementById('iframe-container').innerHTML = `<iframe src="${url}"></iframe>`;
+            document.getElementById('iframe-container').innerHTML = `<iframe src="${fullUrl}"></iframe>`;
         }
 
         function goBackToServices() {
